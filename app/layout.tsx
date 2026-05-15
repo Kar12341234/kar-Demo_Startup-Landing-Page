@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LandingLab | Custom Landing Page Service",
+  title: "ClientFlow | Booking CRM for Service Teams",
   description:
-    "A premium custom landing page demo for founders, consultants, creators, service businesses, and agencies.",
+    "A customer-facing SaaS landing page demo for an appointment booking CRM built for service teams.",
   openGraph: {
-    title: "LandingLab | Custom Landing Page Service",
+    title: "ClientFlow | Booking CRM for Service Teams",
     description:
-      "Conversion-focused landing page design and development for marketplace clients who need a clear offer and working CTA flow.",
+      "Turn website visitors into booked appointments with booking pages, reminders, client records, payments, and reporting.",
     type: "website"
   }
 };

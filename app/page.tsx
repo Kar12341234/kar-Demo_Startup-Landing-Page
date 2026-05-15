@@ -4,24 +4,24 @@ import { FormEvent, ReactNode, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BadgeCheck,
+  ArrowUp,
   BarChart3,
-  BriefcaseBusiness,
+  BellRing,
+  CalendarCheck,
   Check,
   ChevronDown,
+  ClipboardCheck,
   CopyCheck,
-  FileText,
-  LayoutTemplate,
+  CreditCard,
+  Inbox,
   Mail,
   MessageSquareText,
-  MousePointerClick,
-  PenTool,
+  Play,
   Rocket,
   ShieldCheck,
   Sparkles,
   Star,
-  TrendingUp,
-  Upload,
+  UsersRound,
   Zap
 } from "lucide-react";
 
@@ -33,729 +33,669 @@ const localeOptions: Array<{ id: Locale; label: string }> = [
   { id: "zhCN", label: "简" }
 ];
 
-const deliverableIcons = [
-  LayoutTemplate,
-  PenTool,
+const featureIcons = [
+  CalendarCheck,
   MessageSquareText,
-  MousePointerClick,
-  ShieldCheck,
+  BellRing,
+  CreditCard,
+  UsersRound,
   BarChart3
 ];
 
 const content = {
   en: {
     nav: [
-      { label: "Clients", href: "#clients" },
-      { label: "Deliverables", href: "#deliverables" },
-      { label: "Process", href: "#process" },
-      { label: "Packages", href: "#packages" },
+      { label: "Product", href: "#product" },
+      { label: "Workflow", href: "#workflow" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Reviews", href: "#reviews" },
       { label: "FAQ", href: "#faq" }
     ],
-    navCta: "Request quote",
+    navCta: "Book demo",
     hero: {
-      label: "For founders, consultants, creators, and service businesses",
-      title: "A premium landing page that makes your offer easy to trust and easy to buy.",
+      label: "Booking CRM for service teams",
+      title: "Fill your calendar, follow up faster, and keep every client in one clean workspace.",
       body:
-        "Custom Next.js landing pages for Fiverr and Upwork buyers who need a serious launch page: clear positioning, polished UI, working CTA flow, and production-ready code.",
-      primary: "Get a project quote",
-      secondary: "View packages",
-      proof: ["Build passed", "Mobile responsive", "Deploy ready"]
+        "ClientFlow helps studios, clinics, coaches, consultants, and local service teams turn website visitors into booked appointments without messy spreadsheets or missed replies.",
+      primary: "Book a live demo",
+      secondary: "See pricing",
+      proof: ["No credit card required", "Works on mobile", "Setup in one afternoon"]
     },
     preview: {
-      browser: "client-landing-page / conversion-ready",
-      badge: "Lead generation page",
-      title: "Turn paid traffic into booked calls.",
-      body:
-        "A realistic page preview with a clear audience, offer, benefits, proof, pricing, FAQ, and contact flow.",
-      primary: "Book a call",
-      secondary: "View packages",
+      browser: "clientflow.app/dashboard",
+      badge: "This week",
+      title: "23 new bookings",
+      body: "See upcoming appointments, open follow-ups, payments, and client notes from one dashboard.",
+      primary: "Schedule demo",
+      secondary: "View plans",
       metrics: [
-        ["CTA clicks", "34%", "above avg"],
-        ["Mobile score", "96", "checked"],
-        ["Sections", "10", "ready"]
+        ["Reply time", "8 min", "avg"],
+        ["No-shows", "-31%", "month"],
+        ["Revenue", "$18.4k", "tracked"]
       ],
-      sectionLabel: "Page sections",
-      sectionTitle: "Built around buying decisions",
-      checks: ["Clear offer", "Service benefits", "Package comparison", "Project brief form"]
+      queueTitle: "Today’s client queue",
+      queue: ["New lead from pricing page", "Invoice paid by Olivia Chen", "Reminder sent for 3:30 PM"]
     },
-    clients: {
-      label: "Service audience",
-      title: "Built for buyers who need a page that sells one clear offer.",
+    product: {
+      label: "Product",
+      title: "Everything a service business needs before and after the booking.",
       body:
-        "Most marketplace clients are not asking for decoration. They need a page that explains the offer, removes doubt, and sends visitors to the right next step.",
-      cta: "Start my brief",
-      types: [
-        "Startup founders launching an MVP",
-        "Coaches, consultants, and creators selling a premium offer",
-        "Local service businesses that need qualified leads",
-        "Agencies that need a polished campaign page fast"
-      ]
-    },
-    deliverables: {
-      label: "Deliverables",
-      title: "Practical pieces your page needs before traffic arrives.",
-      body:
-        "The goal is not just a pretty screen. The goal is a page that can be reviewed, launched, shared, and improved.",
+        "ClientFlow combines booking pages, client records, reminders, follow-up messages, and simple reporting so your team can stay focused on service.",
       items: [
         {
-          title: "Conversion-first page structure",
-          description:
-            "Hero, offer, proof, benefits, pricing, FAQ, and CTA sections arranged for fast scanning."
+          title: "Online booking pages",
+          description: "Let clients choose services, times, team members, and locations from a polished booking flow."
         },
         {
-          title: "Premium custom UI",
-          description:
-            "Clean SaaS-style visuals with responsive spacing, readable typography, and polished micro-interactions."
+          title: "Client conversations",
+          description: "Keep email, SMS notes, intake details, and follow-up history attached to every client profile."
         },
         {
-          title: "Practical sales copy",
-          description:
-            "Clear headlines and section copy written around your audience, offer, objections, and next step."
+          title: "Automatic reminders",
+          description: "Reduce no-shows with confirmation messages, appointment reminders, and post-visit follow-ups."
         },
         {
-          title: "Working CTA flow",
-          description:
-            "Buttons scroll, select packages, open email briefs, or guide visitors to the right action."
+          title: "Deposits and invoices",
+          description: "Collect deposits, send payment links, and track paid or overdue balances before appointments."
         },
         {
-          title: "Build-ready code",
-          description:
-            "Next.js, TypeScript, Tailwind CSS, App Router, and Framer Motion with a successful production build."
+          title: "Team scheduling",
+          description: "Manage staff availability, private notes, service durations, buffers, and recurring sessions."
         },
         {
-          title: "Launch checklist",
-          description:
-            "SEO metadata, mobile checks, deployment notes, and sensible sections for future analytics tracking."
+          title: "Simple performance reports",
+          description: "Understand bookings, source quality, repeat clients, cancellations, and monthly revenue trends."
         }
       ]
     },
-    process: {
-      label: "Process",
-      title: "Simple enough for a marketplace order. Structured enough for real launch work.",
-      body:
-        "You do not need a perfect brand guide. A clear offer and a few references are enough to start.",
+    workflow: {
+      label: "Workflow",
+      title: "From first visit to paid appointment in three simple steps.",
+      body: "A practical flow for teams that want fewer admin tasks and more confirmed clients.",
       steps: [
         {
           label: "01",
-          title: "Share your offer",
-          description:
-            "Send your product, target customer, examples you like, and the main action you want visitors to take."
+          title: "Publish your booking page",
+          description: "Add your services, availability, intake questions, and brand details in one guided setup."
         },
         {
           label: "02",
-          title: "Build the landing page",
-          description:
-            "I shape the layout, write practical section copy, code the page, and tune the UI for desktop and mobile."
+          title: "Capture and qualify leads",
+          description: "Every enquiry lands in a client timeline with source, service interest, notes, and next action."
         },
         {
           label: "03",
-          title: "Review and launch",
-          description:
-            "You review the page, I handle focused revisions, then prepare the project for GitHub, Netlify, or your handoff."
+          title: "Confirm, remind, and follow up",
+          description: "Send reminders, collect deposits, and trigger follow-up messages after the appointment."
         }
       ]
     },
-    packagesSection: {
-      label: "Packages",
-      title: "Choose the scope that matches your launch.",
-      body:
-        "Pricing depends on final scope, assets, revisions, and integrations. These packages make the starting point clear.",
-      popular: "Most requested",
-      select: "Select"
+    pricingSection: {
+      label: "Pricing",
+      title: "Plans for solo providers, small teams, and growing locations.",
+      body: "Start with the basics, then add automation, payments, and multi-location reporting when you need it.",
+      popular: "Popular",
+      select: "Choose"
     },
-    packages: [
+    pricing: [
       {
-        id: "starter",
-        name: "Starter",
-        price: "$150+",
-        timeline: "3-4 days",
-        description: "A focused one-page site for a simple offer or early MVP.",
-        includes: ["5 sections", "Responsive design", "Basic contact CTA"],
+        id: "solo",
+        name: "Solo",
+        price: "$19",
+        period: "/mo",
+        description: "For independent providers who need a clean booking page and reminders.",
+        includes: ["1 user", "Booking page", "Email reminders"],
         highlighted: false
+      },
+      {
+        id: "studio",
+        name: "Studio",
+        price: "$49",
+        period: "/mo",
+        description: "For small teams that need shared calendars, follow-ups, and deposits.",
+        includes: ["5 users", "SMS reminders", "Deposits and invoices"],
+        highlighted: true
       },
       {
         id: "growth",
         name: "Growth",
-        price: "$350+",
-        timeline: "5-7 days",
-        description: "Best for Fiverr and Upwork buyers who need a stronger sales page.",
-        includes: ["8-10 sections", "Custom UI system", "Lead form and CTA flow"],
-        highlighted: true
-      },
-      {
-        id: "launch",
-        name: "Launch",
-        price: "$650+",
-        timeline: "7-10 days",
-        description:
-          "A polished launch-ready page for paid ads, investor demos, or product campaigns.",
-        includes: ["Advanced sections", "Motion design", "Deploy-ready handoff"],
+        price: "$129",
+        period: "/mo",
+        description: "For busy service businesses with multiple services, teams, or locations.",
+        includes: ["Unlimited users", "Advanced reporting", "Priority support"],
         highlighted: false
       }
     ],
-    proof: {
-      label: "Client proof",
-      title: "The page should feel useful before the first call.",
+    reviews: {
+      label: "Reviews",
+      title: "Built for teams that live by their calendar.",
       testimonials: [
         {
           quote:
-            "The page finally explained our offer in a way clients understood. We used it for ads the same week.",
-          name: "Elena Morris",
-          role: "Founder, bookkeeping service"
+            "We stopped losing leads in DMs. Clients book, pay a deposit, and receive reminders without our front desk chasing them.",
+          name: "Maya Lin",
+          role: "Owner, Glow Skin Studio"
         },
         {
           quote:
-            "I needed something premium for a course launch, not a generic template. The final page felt tailored and ready to sell.",
-          name: "Daniel Reed",
-          role: "Business coach"
+            "The dashboard is simple enough for our team to use every day. It replaced three tools and a lot of copy-paste work.",
+          name: "Ryan Brooks",
+          role: "Founder, Brookside Therapy"
         },
         {
           quote:
-            "Clear process, clean code, and every CTA worked. It was easy to hand off to our marketing team.",
-          name: "Nora Kim",
-          role: "SaaS product lead"
+            "ClientFlow made our follow-up process consistent. Repeat bookings became easier to track within the first month.",
+          name: "Sofia Martinez",
+          role: "Operations Lead, Elevate Coaching"
         }
       ]
     },
-    brief: {
-      label: "Project brief",
-      title: "Send a clear brief in under two minutes.",
+    demo: {
+      label: "Book a demo",
+      title: "See how ClientFlow would fit your service business.",
       body:
-        "The form opens an email draft with your selected package and project details. Replace the email address before using it with a real client inbox.",
-      stats: [
-        ["Best for", "One clear offer, one focused conversion goal"],
-        ["Handoff", "Source code, build notes, and GitHub-ready project"]
+        "Pick a plan, share your business details, and we will prepare a focused demo around your booking workflow.",
+      selectedPlan: "Selected plan",
+      highlights: [
+        ["Typical setup", "Same day for most small teams"],
+        ["Best fit", "Appointment-based services and consultations"]
       ],
-      selectedPackage: "Selected package",
       labels: {
         name: "Name",
         email: "Email",
-        business: "Business or offer",
-        timeline: "Timeline",
-        goal: "Main goal"
+        business: "Business type",
+        teamSize: "Team size",
+        goal: "What do you want to improve?"
       },
       placeholders: {
         name: "Your name",
         email: "you@example.com",
-        business: "Online course, SaaS MVP, local service...",
-        goal:
-          "Example: collect consultation calls from paid traffic, launch a product waitlist, sell a coaching offer..."
+        business: "Studio, clinic, coaching, consulting...",
+        goal: "Example: reduce missed enquiries, collect deposits, send reminders..."
       },
-      timelines: [
-        { id: "week", label: "This week" },
-        { id: "month", label: "This month" },
-        { id: "flexible", label: "Flexible" }
+      teamSizes: [
+        { id: "solo", label: "Just me" },
+        { id: "small", label: "2-5 people" },
+        { id: "team", label: "6+ people" }
       ],
-      submit: "Email this brief",
-      copy: "Copy brief",
-      copied: "Brief copied",
-      emailSubject: "Landing page project brief",
+      submit: "Send demo request",
+      copy: "Copy request",
+      copied: "Request copied",
+      emailSubject: "ClientFlow demo request",
       emailLabels: {
-        package: "Package",
+        plan: "Plan",
         name: "Name",
         email: "Email",
-        business: "Business",
-        timeline: "Timeline",
+        business: "Business type",
+        teamSize: "Team size",
         goal: "Goal"
       }
     },
     faq: {
       label: "FAQ",
-      title: "Details buyers usually ask before ordering.",
-      body: "A high-converting page starts with a focused offer, not a long meeting.",
+      title: "Questions before switching your booking workflow.",
+      body: "ClientFlow is designed to be simple enough for daily use and flexible enough for real service operations.",
       items: [
         {
-          question: "Who is this service best for?",
+          question: "Can clients book directly from our website?",
           answer:
-            "It is best for founders, consultants, coaches, local service businesses, creators, and agencies that need a professional one-page landing page to sell one clear offer."
+            "Yes. You can link to a hosted booking page or embed the booking flow into your existing website."
         },
         {
-          question: "Do I need to provide finished copy?",
+          question: "Does it support deposits?",
           answer:
-            "No. You can send rough notes, a website link, competitor examples, or a short offer description. I will turn that into practical landing page copy."
+            "Yes. The Studio and Growth plans support deposits, payment links, and invoice tracking."
         },
         {
-          question: "Can the page be deployed later?",
+          question: "Can our team manage separate calendars?",
           answer:
-            "Yes. The project is built with Next.js and can be deployed to Netlify, Vercel, or another host once your account is ready."
+            "Yes. Each staff member can have availability, services, buffers, and private appointment notes."
         },
         {
-          question: "What do I receive at handoff?",
+          question: "Can we import existing clients?",
           answer:
-            "You receive the source code, responsive landing page, clean section structure, working CTA flow, and build instructions."
+            "Yes. You can import a CSV list or add clients manually as you move your booking workflow into ClientFlow."
         }
       ]
     },
     finalCta: {
-      title: "Ready to turn your offer into a page people can act on?",
+      title: "Ready to make every enquiry easier to book?",
       body:
-        "Select a package, send a short brief, and get a custom landing page built for trust, clarity, and conversion.",
-      primary: "Send project brief",
-      secondary: "Review deliverables"
+        "Start with one booking page, one client inbox, and one reliable workflow your team can actually use.",
+      primary: "Book a demo",
+      secondary: "Compare plans"
     },
-    footer: "(c) 2026 LandingLab. Custom landing page demo for marketplace clients."
+    footer: "(c) 2026 ClientFlow. Booking CRM for modern service teams."
   },
   zhTW: {
     nav: [
-      { label: "客戶類型", href: "#clients" },
-      { label: "交付內容", href: "#deliverables" },
-      { label: "流程", href: "#process" },
-      { label: "方案", href: "#packages" },
+      { label: "產品", href: "#product" },
+      { label: "流程", href: "#workflow" },
+      { label: "價格", href: "#pricing" },
+      { label: "評價", href: "#reviews" },
       { label: "FAQ", href: "#faq" }
     ],
-    navCta: "取得報價",
+    navCta: "預約 Demo",
     hero: {
-      label: "為創業者、顧問、創作者和服務型商家打造",
-      title: "一個高級落地頁，讓你的服務更容易被理解、信任和下單。",
+      label: "為服務型團隊打造的預約 CRM",
+      title: "填滿你的預約表，更快跟進客戶，並把所有客戶資料放在一個清晰工作台。",
       body:
-        "專為 Fiverr / Upwork 常見買家打造的 Next.js 定製落地頁：定位清晰、UI 精緻、CTA 可操作、程式碼可交付並可部署。",
-      primary: "取得項目報價",
-      secondary: "查看方案",
-      proof: ["Build 已通過", "手機版自適應", "可部署交付"]
+        "ClientFlow 幫助工作室、診所、教練、顧問和本地服務團隊，把網站訪客轉化為已確認預約，告別混亂表格和漏回訊息。",
+      primary: "預約產品 Demo",
+      secondary: "查看價格",
+      proof: ["無需信用卡", "手機可用", "半天內可完成設定"]
     },
     preview: {
-      browser: "client-landing-page / conversion-ready",
-      badge: "Lead generation page",
-      title: "把廣告流量變成預約諮詢。",
-      body:
-        "真實可用的頁面預覽：明確客戶、服務賣點、信任證明、方案、FAQ 和聯絡流程。",
-      primary: "預約諮詢",
+      browser: "clientflow.app/dashboard",
+      badge: "本週",
+      title: "23 個新預約",
+      body: "在同一個 dashboard 查看即將到來的預約、待跟進客戶、付款和客戶備註。",
+      primary: "預約 Demo",
       secondary: "查看方案",
       metrics: [
-        ["CTA 點擊", "34%", "高於平均"],
-        ["手機評分", "96", "已檢查"],
-        ["頁面區塊", "10", "已準備"]
+        ["回覆時間", "8 分鐘", "平均"],
+        ["缺席率", "-31%", "本月"],
+        ["營收", "$18.4k", "已追蹤"]
       ],
-      sectionLabel: "頁面結構",
-      sectionTitle: "圍繞購買決策設計",
-      checks: ["清楚報價", "服務利益", "方案比較", "項目簡報表單"]
+      queueTitle: "今日客戶隊列",
+      queue: ["來自價格頁的新 lead", "Olivia Chen 已付款", "已發送 3:30 PM 預約提醒"]
     },
-    clients: {
-      label: "服務對象",
-      title: "適合需要用一個頁面賣清楚一個服務的買家。",
+    product: {
+      label: "產品",
+      title: "服務商家在預約前後需要的工具，都放在一起。",
       body:
-        "多數平台客戶不是只要好看的設計，而是需要頁面講清楚服務、降低疑慮，並引導訪客完成下一步。",
-      cta: "開始填寫簡報",
-      types: [
-        "準備發佈 MVP 的 Startup Founder",
-        "銷售高單價服務的教練、顧問和創作者",
-        "需要獲取有效客戶名單的本地服務商家",
-        "需要快速交付活動頁的 Agency"
-      ]
-    },
-    deliverables: {
-      label: "交付內容",
-      title: "在導入流量前，落地頁需要先具備這些實用元素。",
-      body:
-        "目標不是只有漂亮畫面，而是一個能審核、能上線、能分享、能繼續優化的頁面。",
+        "ClientFlow 結合預約頁、客戶資料、提醒、跟進訊息和簡明報表，讓團隊專注在服務客戶。",
       items: [
         {
-          title: "以轉化為核心的頁面結構",
-          description: "Hero、服務、信任證明、利益、方案、FAQ 和 CTA，按照瀏覽決策設計。"
+          title: "線上預約頁",
+          description: "讓客戶自行選擇服務、時間、團隊成員和地點，完成順暢預約流程。"
         },
         {
-          title: "高級定製 UI",
-          description: "乾淨的 SaaS 風格、舒適留白、可讀字體和精緻微互動。"
+          title: "客戶對話紀錄",
+          description: "Email、SMS 備註、問卷資料和跟進紀錄都附在每個客戶檔案裡。"
         },
         {
-          title: "實用銷售文案",
-          description: "根據你的客戶、服務、疑慮和下一步行動，撰寫清晰頁面文案。"
+          title: "自動提醒",
+          description: "用確認訊息、預約提醒和服務後跟進，減少缺席和人工追訊息。"
         },
         {
-          title: "可操作 CTA 流程",
-          description: "按鈕可滾動、選方案、開 email brief，或引導訪客到正確動作。"
+          title: "訂金和發票",
+          description: "收取訂金、發送付款連結，並在預約前追蹤已付和未付金額。"
         },
         {
-          title: "可 build 的程式碼",
-          description: "Next.js、TypeScript、Tailwind CSS、App Router、Framer Motion，並通過 production build。"
+          title: "團隊排程",
+          description: "管理員工可預約時間、內部備註、服務時長、緩衝時間和固定課程。"
         },
         {
-          title: "上線檢查清單",
-          description: "SEO metadata、手機版檢查、部署說明，以及日後接 analytics 的合理結構。"
+          title: "簡明營運報表",
+          description: "了解預約數、來源品質、回訪客戶、取消率和每月營收變化。"
         }
       ]
     },
-    process: {
+    workflow: {
       label: "流程",
-      title: "足夠簡單，可以平台下單；足夠完整，可以真正上線。",
-      body: "你不需要先準備完美品牌手冊。只要有服務描述、目標客戶和幾個參考網站就能開始。",
+      title: "從第一次訪問到完成付費預約，只需要三步。",
+      body: "適合想減少行政工作、增加確認預約的服務型團隊。",
       steps: [
         {
           label: "01",
-          title: "提供你的服務資料",
-          description: "傳給我產品或服務、目標客戶、喜歡的參考頁，以及你希望訪客完成的主要動作。"
+          title: "發布你的預約頁",
+          description: "加入服務項目、可預約時間、預約問題和品牌資料，完成引導式設定。"
         },
         {
           label: "02",
-          title: "設計並開發落地頁",
-          description: "我會整理架構、撰寫實用文案、完成頁面開發，並調整桌面和手機版體驗。"
+          title: "收集並篩選客戶",
+          description: "每個 enquiry 都會進入客戶時間線，包含來源、感興趣服務、備註和下一步。"
         },
         {
           label: "03",
-          title: "審核、修正和交付",
-          description: "你審核頁面後，我處理聚焦修改，然後準備 GitHub、Netlify 或交付檔案。"
+          title: "確認、提醒和跟進",
+          description: "發送提醒、收取訂金，並在預約後自動觸發跟進訊息。"
         }
       ]
     },
-    packagesSection: {
-      label: "方案",
-      title: "選擇符合你上線目標的範圍。",
-      body: "最終價格取決於範圍、素材、修改次數和整合需求。這些方案讓起點更清楚。",
-      popular: "最多人選",
+    pricingSection: {
+      label: "價格",
+      title: "適合個人服務者、小團隊和成長型門店的方案。",
+      body: "從基本預約開始，需要時再加入自動提醒、付款和多地點報表。",
+      popular: "熱門",
       select: "選擇"
     },
-    packages: [
+    pricing: [
       {
-        id: "starter",
-        name: "入門",
-        price: "$150+",
-        timeline: "3-4 天",
-        description: "適合簡單服務、早期 MVP 或單一 offer 的一頁式網站。",
-        includes: ["5 個區塊", "響應式設計", "基本聯絡 CTA"],
+        id: "solo",
+        name: "Solo",
+        price: "$19",
+        period: "/月",
+        description: "適合需要乾淨預約頁和提醒功能的個人服務者。",
+        includes: ["1 位使用者", "預約頁", "Email 提醒"],
         highlighted: false
       },
       {
-        id: "growth",
-        name: "增長",
-        price: "$350+",
-        timeline: "5-7 天",
-        description: "適合 Fiverr / Upwork 買家需要更完整、更有說服力的銷售頁。",
-        includes: ["8-10 個區塊", "定製 UI 系統", "Lead form 和 CTA 流程"],
+        id: "studio",
+        name: "Studio",
+        price: "$49",
+        period: "/月",
+        description: "適合需要共享日曆、跟進流程和訂金的小型團隊。",
+        includes: ["5 位使用者", "SMS 提醒", "訂金和發票"],
         highlighted: true
       },
       {
-        id: "launch",
-        name: "啟動",
-        price: "$650+",
-        timeline: "7-10 天",
-        description: "適合投放廣告、產品發佈、投資人展示或正式活動頁。",
-        includes: ["進階區塊", "動效設計", "可部署交付"],
+        id: "growth",
+        name: "Growth",
+        price: "$129",
+        period: "/月",
+        description: "適合有多項服務、多位員工或多門店的繁忙服務商家。",
+        includes: ["不限使用者", "進階報表", "優先支援"],
         highlighted: false
       }
     ],
-    proof: {
-      label: "客戶回饋",
-      title: "一個好頁面，在第一次通話前就應該讓人覺得有用。",
+    reviews: {
+      label: "評價",
+      title: "為每天依靠預約表營運的團隊打造。",
       testimonials: [
         {
-          quote: "頁面終於把我們的服務講清楚了，客戶看得懂，我們同一週就拿去投廣告。",
-          name: "Elena Morris",
-          role: "記帳服務創辦人"
+          quote: "我們不再把 lead 丟在 DM 裡。客戶可以自行預約、付訂金、收到提醒，前台不用一直追。",
+          name: "Maya Lin",
+          role: "Glow Skin Studio 店主"
         },
         {
-          quote: "我需要的是高級課程發佈頁，不是模板感設計。最後頁面很貼合我的 offer。",
-          name: "Daniel Reed",
-          role: "商業教練"
+          quote: "Dashboard 足夠簡單，團隊每天都願意用。它取代了三個工具和大量複製貼上。",
+          name: "Ryan Brooks",
+          role: "Brookside Therapy 創辦人"
         },
         {
-          quote: "流程清楚、程式碼乾淨，每個 CTA 都能用，交給行銷團隊也很容易。",
-          name: "Nora Kim",
-          role: "SaaS 產品負責人"
+          quote: "ClientFlow 讓跟進流程變得穩定。第一個月我們就更容易追蹤回訪預約。",
+          name: "Sofia Martinez",
+          role: "Elevate Coaching 營運主管"
         }
       ]
     },
-    brief: {
-      label: "項目簡報",
-      title: "兩分鐘內送出清楚的項目需求。",
-      body: "表單會根據你選擇的方案和項目資料打開 email 草稿。正式使用前可換成你的真實收件地址。",
-      stats: [
-        ["最適合", "一個清楚 offer，一個明確轉化目標"],
-        ["交付", "源碼、build 說明、GitHub-ready 專案"]
+    demo: {
+      label: "預約 Demo",
+      title: "看看 ClientFlow 如何適配你的服務業務。",
+      body: "選擇方案，留下你的業務資料，我們會根據你的預約流程準備一個聚焦 demo。",
+      selectedPlan: "已選方案",
+      highlights: [
+        ["一般設定", "多數小團隊可當天完成"],
+        ["最適合", "預約制服務和諮詢業務"]
       ],
-      selectedPackage: "已選方案",
       labels: {
         name: "姓名",
         email: "Email",
-        business: "業務或服務",
-        timeline: "時間",
-        goal: "主要目標"
+        business: "業務類型",
+        teamSize: "團隊人數",
+        goal: "你想改善什麼？"
       },
       placeholders: {
         name: "你的姓名",
         email: "you@example.com",
-        business: "線上課程、SaaS MVP、本地服務...",
-        goal: "例：從廣告流量收集諮詢預約、發佈產品 waitlist、銷售教練服務..."
+        business: "工作室、診所、教練、顧問...",
+        goal: "例：減少漏回 enquiry、收訂金、發送提醒..."
       },
-      timelines: [
-        { id: "week", label: "本週" },
-        { id: "month", label: "本月" },
-        { id: "flexible", label: "時間彈性" }
+      teamSizes: [
+        { id: "solo", label: "只有我" },
+        { id: "small", label: "2-5 人" },
+        { id: "team", label: "6 人以上" }
       ],
-      submit: "Email 發送簡報",
-      copy: "複製簡報",
+      submit: "送出 Demo 需求",
+      copy: "複製需求",
       copied: "已複製",
-      emailSubject: "Landing page 項目簡報",
+      emailSubject: "ClientFlow Demo 預約需求",
       emailLabels: {
-        package: "方案",
+        plan: "方案",
         name: "姓名",
         email: "Email",
-        business: "業務",
-        timeline: "時間",
+        business: "業務類型",
+        teamSize: "團隊人數",
         goal: "目標"
       }
     },
     faq: {
       label: "FAQ",
-      title: "買家下單前常問的細節。",
-      body: "高轉化頁面從一個聚焦的 offer 開始，而不是一場很長的會議。",
+      title: "切換預約流程前常見問題。",
+      body: "ClientFlow 設計得足夠簡單，可以每天使用，也足夠彈性，能支援真實服務營運。",
       items: [
         {
-          question: "這個服務最適合誰？",
-          answer:
-            "最適合創業者、顧問、教練、本地服務商家、創作者和 agency，用一頁式網站銷售一個清楚 offer。"
+          question: "客戶可以直接在我們網站預約嗎？",
+          answer: "可以。你可以連到 hosted booking page，也可以把預約流程嵌入現有網站。"
         },
         {
-          question: "我需要先提供完整文案嗎？",
-          answer: "不需要。你可以提供簡單筆記、網站連結、競品例子或服務描述，我會整理成實用落地頁文案。"
+          question: "支援收訂金嗎？",
+          answer: "支援。Studio 和 Growth 方案支援訂金、付款連結和發票追蹤。"
         },
         {
-          question: "之後可以部署嗎？",
-          answer: "可以。專案使用 Next.js，可以在 Netlify、Vercel 或其他主機部署。"
+          question: "團隊可以管理不同日曆嗎？",
+          answer: "可以。每位員工都可以設定可預約時間、服務項目、緩衝時間和內部備註。"
         },
         {
-          question: "最後會收到什麼？",
-          answer: "你會收到源碼、響應式落地頁、清楚頁面結構、可用 CTA 流程和 build 說明。"
+          question: "可以匯入現有客戶嗎？",
+          answer: "可以。你可以匯入 CSV 名單，也可以在轉移預約流程時手動新增客戶。"
         }
       ]
     },
     finalCta: {
-      title: "準備把你的服務變成讓客戶願意行動的頁面嗎？",
-      body: "選擇方案、送出簡短需求，獲得一個以信任、清晰和轉化為核心的定製落地頁。",
-      primary: "送出項目簡報",
-      secondary: "查看交付內容"
+      title: "準備讓每個 enquiry 更容易變成預約嗎？",
+      body: "從一個預約頁、一個客戶 inbox 和一套團隊真正會用的流程開始。",
+      primary: "預約 Demo",
+      secondary: "比較方案"
     },
-    footer: "(c) 2026 LandingLab. 面向平台客戶的定製落地頁展示。"
+    footer: "(c) 2026 ClientFlow. 為現代服務型團隊打造的預約 CRM。"
   },
   zhCN: {
     nav: [
-      { label: "客户类型", href: "#clients" },
-      { label: "交付内容", href: "#deliverables" },
-      { label: "流程", href: "#process" },
-      { label: "套餐", href: "#packages" },
+      { label: "产品", href: "#product" },
+      { label: "流程", href: "#workflow" },
+      { label: "价格", href: "#pricing" },
+      { label: "评价", href: "#reviews" },
       { label: "FAQ", href: "#faq" }
     ],
-    navCta: "获取报价",
+    navCta: "预约 Demo",
     hero: {
-      label: "为创业者、顾问、创作者和服务型商家打造",
-      title: "一个高级落地页，让你的服务更容易被理解、信任和下单。",
+      label: "为服务型团队打造的预约 CRM",
+      title: "填满你的预约表，更快跟进客户，并把所有客户资料放在一个清晰工作台。",
       body:
-        "专为 Fiverr / Upwork 常见买家打造的 Next.js 定制落地页：定位清晰、UI 精致、CTA 可操作、代码可交付并可部署。",
-      primary: "获取项目报价",
-      secondary: "查看套餐",
-      proof: ["Build 已通过", "移动端自适应", "可部署交付"]
+        "ClientFlow 帮助工作室、诊所、教练、顾问和本地服务团队，把网站访客转化为已确认预约，告别混乱表格和漏回消息。",
+      primary: "预约产品 Demo",
+      secondary: "查看价格",
+      proof: ["无需信用卡", "移动端可用", "半天内可完成设置"]
     },
     preview: {
-      browser: "client-landing-page / conversion-ready",
-      badge: "Lead generation page",
-      title: "把广告流量变成预约咨询。",
-      body:
-        "真实可用的页面预览：明确客户、服务卖点、信任证明、套餐、FAQ 和联系流程。",
-      primary: "预约咨询",
+      browser: "clientflow.app/dashboard",
+      badge: "本周",
+      title: "23 个新预约",
+      body: "在同一个 dashboard 查看即将到来的预约、待跟进客户、付款和客户备注。",
+      primary: "预约 Demo",
       secondary: "查看套餐",
       metrics: [
-        ["CTA 点击", "34%", "高于平均"],
-        ["移动评分", "96", "已检查"],
-        ["页面区块", "10", "已准备"]
+        ["回复时间", "8 分钟", "平均"],
+        ["缺席率", "-31%", "本月"],
+        ["营收", "$18.4k", "已追踪"]
       ],
-      sectionLabel: "页面结构",
-      sectionTitle: "围绕购买决策设计",
-      checks: ["清楚报价", "服务利益", "套餐对比", "项目简报表单"]
+      queueTitle: "今日客户队列",
+      queue: ["来自价格页的新 lead", "Olivia Chen 已付款", "已发送 3:30 PM 预约提醒"]
     },
-    clients: {
-      label: "服务对象",
-      title: "适合需要用一个页面卖清楚一个服务的买家。",
+    product: {
+      label: "产品",
+      title: "服务商家在预约前后需要的工具，都放在一起。",
       body:
-        "多数平台客户不是只要好看的设计，而是需要页面讲清楚服务、降低疑虑，并引导访客完成下一步。",
-      cta: "开始填写简报",
-      types: [
-        "准备发布 MVP 的 Startup Founder",
-        "销售高客单服务的教练、顾问和创作者",
-        "需要获取有效客户名单的本地服务商家",
-        "需要快速交付活动页的 Agency"
-      ]
-    },
-    deliverables: {
-      label: "交付内容",
-      title: "在导入流量前，落地页需要先具备这些实用元素。",
-      body:
-        "目标不是只有漂亮画面，而是一个能审核、能上线、能分享、能继续优化的页面。",
+        "ClientFlow 结合预约页、客户资料、提醒、跟进消息和简明报表，让团队专注在服务客户。",
       items: [
         {
-          title: "以转化为核心的页面结构",
-          description: "Hero、服务、信任证明、利益、套餐、FAQ 和 CTA，按照浏览决策设计。"
+          title: "线上预约页",
+          description: "让客户自行选择服务、时间、团队成员和地点，完成顺畅预约流程。"
         },
         {
-          title: "高级定制 UI",
-          description: "干净的 SaaS 风格、舒适留白、可读字体和精致微交互。"
+          title: "客户对话记录",
+          description: "Email、SMS 备注、问卷资料和跟进记录都附在每个客户档案里。"
         },
         {
-          title: "实用销售文案",
-          description: "根据你的客户、服务、疑虑和下一步行动，撰写清晰页面文案。"
+          title: "自动提醒",
+          description: "用确认消息、预约提醒和服务后跟进，减少缺席和人工追消息。"
         },
         {
-          title: "可操作 CTA 流程",
-          description: "按钮可滚动、选套餐、打开 email brief，或引导访客到正确动作。"
+          title: "订金和发票",
+          description: "收取订金、发送付款链接，并在预约前追踪已付和未付金额。"
         },
         {
-          title: "可 build 的代码",
-          description: "Next.js、TypeScript、Tailwind CSS、App Router、Framer Motion，并通过 production build。"
+          title: "团队排程",
+          description: "管理员工可预约时间、内部备注、服务时长、缓冲时间和固定课程。"
         },
         {
-          title: "上线检查清单",
-          description: "SEO metadata、移动端检查、部署说明，以及日后接 analytics 的合理结构。"
+          title: "简明运营报表",
+          description: "了解预约数、来源质量、回访客户、取消率和每月营收变化。"
         }
       ]
     },
-    process: {
+    workflow: {
       label: "流程",
-      title: "足够简单，可以平台下单；足够完整，可以真正上线。",
-      body: "你不需要先准备完美品牌手册。只要有服务描述、目标客户和几个参考网站就能开始。",
+      title: "从第一次访问到完成付费预约，只需要三步。",
+      body: "适合想减少行政工作、增加确认预约的服务型团队。",
       steps: [
         {
           label: "01",
-          title: "提供你的服务资料",
-          description: "把产品或服务、目标客户、喜欢的参考页，以及你希望访客完成的主要动作发给我。"
+          title: "发布你的预约页",
+          description: "加入服务项目、可预约时间、预约问题和品牌资料，完成引导式设置。"
         },
         {
           label: "02",
-          title: "设计并开发落地页",
-          description: "我会整理架构、撰写实用文案、完成页面开发，并调整桌面和移动端体验。"
+          title: "收集并筛选客户",
+          description: "每个 enquiry 都会进入客户时间线，包含来源、感兴趣服务、备注和下一步。"
         },
         {
           label: "03",
-          title: "审核、修改和交付",
-          description: "你审核页面后，我处理聚焦修改，然后准备 GitHub、Netlify 或交付文件。"
+          title: "确认、提醒和跟进",
+          description: "发送提醒、收取订金，并在预约后自动触发跟进消息。"
         }
       ]
     },
-    packagesSection: {
-      label: "套餐",
-      title: "选择符合你上线目标的范围。",
-      body: "最终价格取决于范围、素材、修改次数和集成需求。这些套餐让起点更清楚。",
-      popular: "最多人选",
+    pricingSection: {
+      label: "价格",
+      title: "适合个人服务者、小团队和成长型门店的套餐。",
+      body: "从基础预约开始，需要时再加入自动提醒、付款和多地点报表。",
+      popular: "热门",
       select: "选择"
     },
-    packages: [
+    pricing: [
       {
-        id: "starter",
-        name: "入门",
-        price: "$150+",
-        timeline: "3-4 天",
-        description: "适合简单服务、早期 MVP 或单一 offer 的一页式网站。",
-        includes: ["5 个区块", "响应式设计", "基础联系 CTA"],
+        id: "solo",
+        name: "Solo",
+        price: "$19",
+        period: "/月",
+        description: "适合需要干净预约页和提醒功能的个人服务者。",
+        includes: ["1 位用户", "预约页", "Email 提醒"],
         highlighted: false
       },
       {
-        id: "growth",
-        name: "增长",
-        price: "$350+",
-        timeline: "5-7 天",
-        description: "适合 Fiverr / Upwork 买家需要更完整、更有说服力的销售页。",
-        includes: ["8-10 个区块", "定制 UI 系统", "Lead form 和 CTA 流程"],
+        id: "studio",
+        name: "Studio",
+        price: "$49",
+        period: "/月",
+        description: "适合需要共享日历、跟进流程和订金的小型团队。",
+        includes: ["5 位用户", "SMS 提醒", "订金和发票"],
         highlighted: true
       },
       {
-        id: "launch",
-        name: "启动",
-        price: "$650+",
-        timeline: "7-10 天",
-        description: "适合投放广告、产品发布、投资人展示或正式活动页。",
-        includes: ["进阶区块", "动效设计", "可部署交付"],
+        id: "growth",
+        name: "Growth",
+        price: "$129",
+        period: "/月",
+        description: "适合有多项服务、多位员工或多门店的繁忙服务商家。",
+        includes: ["不限用户", "进阶报表", "优先支持"],
         highlighted: false
       }
     ],
-    proof: {
-      label: "客户反馈",
-      title: "一个好页面，在第一次通话前就应该让人觉得有用。",
+    reviews: {
+      label: "评价",
+      title: "为每天依靠预约表运营的团队打造。",
       testimonials: [
         {
-          quote: "页面终于把我们的服务讲清楚了，客户看得懂，我们同一周就拿去投广告。",
-          name: "Elena Morris",
-          role: "记账服务创办人"
+          quote: "我们不再把 lead 丢在 DM 里。客户可以自行预约、付订金、收到提醒，前台不用一直追。",
+          name: "Maya Lin",
+          role: "Glow Skin Studio 店主"
         },
         {
-          quote: "我需要的是高级课程发布页，不是模板感设计。最后页面很贴合我的 offer。",
-          name: "Daniel Reed",
-          role: "商业教练"
+          quote: "Dashboard 足够简单，团队每天都愿意用。它取代了三个工具和大量复制粘贴。",
+          name: "Ryan Brooks",
+          role: "Brookside Therapy 创办人"
         },
         {
-          quote: "流程清楚、代码干净，每个 CTA 都能用，交给营销团队也很容易。",
-          name: "Nora Kim",
-          role: "SaaS 产品负责人"
+          quote: "ClientFlow 让跟进流程变得稳定。第一个月我们就更容易追踪回访预约。",
+          name: "Sofia Martinez",
+          role: "Elevate Coaching 运营主管"
         }
       ]
     },
-    brief: {
-      label: "项目简报",
-      title: "两分钟内送出清楚的项目需求。",
-      body: "表单会根据你选择的套餐和项目资料打开 email 草稿。正式使用前可换成你的真实收件地址。",
-      stats: [
-        ["最适合", "一个清楚 offer，一个明确转化目标"],
-        ["交付", "源码、build 说明、GitHub-ready 项目"]
+    demo: {
+      label: "预约 Demo",
+      title: "看看 ClientFlow 如何适配你的服务业务。",
+      body: "选择套餐，留下你的业务资料，我们会根据你的预约流程准备一个聚焦 demo。",
+      selectedPlan: "已选套餐",
+      highlights: [
+        ["一般设置", "多数小团队可当天完成"],
+        ["最适合", "预约制服务和咨询业务"]
       ],
-      selectedPackage: "已选套餐",
       labels: {
         name: "姓名",
         email: "Email",
-        business: "业务或服务",
-        timeline: "时间",
-        goal: "主要目标"
+        business: "业务类型",
+        teamSize: "团队人数",
+        goal: "你想改善什么？"
       },
       placeholders: {
         name: "你的姓名",
         email: "you@example.com",
-        business: "线上课程、SaaS MVP、本地服务...",
-        goal: "例：从广告流量收集咨询预约、发布产品 waitlist、销售教练服务..."
+        business: "工作室、诊所、教练、顾问...",
+        goal: "例：减少漏回 enquiry、收订金、发送提醒..."
       },
-      timelines: [
-        { id: "week", label: "本周" },
-        { id: "month", label: "本月" },
-        { id: "flexible", label: "时间灵活" }
+      teamSizes: [
+        { id: "solo", label: "只有我" },
+        { id: "small", label: "2-5 人" },
+        { id: "team", label: "6 人以上" }
       ],
-      submit: "Email 发送简报",
-      copy: "复制简报",
+      submit: "送出 Demo 需求",
+      copy: "复制需求",
       copied: "已复制",
-      emailSubject: "Landing page 项目简报",
+      emailSubject: "ClientFlow Demo 预约需求",
       emailLabels: {
-        package: "套餐",
+        plan: "套餐",
         name: "姓名",
         email: "Email",
-        business: "业务",
-        timeline: "时间",
+        business: "业务类型",
+        teamSize: "团队人数",
         goal: "目标"
       }
     },
     faq: {
       label: "FAQ",
-      title: "买家下单前常问的细节。",
-      body: "高转化页面从一个聚焦的 offer 开始，而不是一场很长的会议。",
+      title: "切换预约流程前常见问题。",
+      body: "ClientFlow 设计得足够简单，可以每天使用，也足够灵活，能支持真实服务运营。",
       items: [
         {
-          question: "这个服务最适合谁？",
-          answer:
-            "最适合创业者、顾问、教练、本地服务商家、创作者和 agency，用一页式网站销售一个清楚 offer。"
+          question: "客户可以直接在我们网站预约吗？",
+          answer: "可以。你可以连到 hosted booking page，也可以把预约流程嵌入现有网站。"
         },
         {
-          question: "我需要先提供完整文案吗？",
-          answer: "不需要。你可以提供简单笔记、网站链接、竞品例子或服务描述，我会整理成实用落地页文案。"
+          question: "支持收订金吗？",
+          answer: "支持。Studio 和 Growth 套餐支持订金、付款链接和发票追踪。"
         },
         {
-          question: "之后可以部署吗？",
-          answer: "可以。项目使用 Next.js，可以在 Netlify、Vercel 或其他主机部署。"
+          question: "团队可以管理不同日历吗？",
+          answer: "可以。每位员工都可以设置可预约时间、服务项目、缓冲时间和内部备注。"
         },
         {
-          question: "最后会收到什么？",
-          answer: "你会收到源码、响应式落地页、清楚页面结构、可用 CTA 流程和 build 说明。"
+          question: "可以导入现有客户吗？",
+          answer: "可以。你可以导入 CSV 名单，也可以在转移预约流程时手动新增客户。"
         }
       ]
     },
     finalCta: {
-      title: "准备把你的服务变成让客户愿意行动的页面吗？",
-      body: "选择套餐、送出简短需求，获得一个以信任、清晰和转化为核心的定制落地页。",
-      primary: "送出项目简报",
-      secondary: "查看交付内容"
+      title: "准备让每个 enquiry 更容易变成预约吗？",
+      body: "从一个预约页、一个客户 inbox 和一套团队真正会用的流程开始。",
+      primary: "预约 Demo",
+      secondary: "比较套餐"
     },
-    footer: "(c) 2026 LandingLab. 面向平台客户的定制落地页展示。"
+    footer: "(c) 2026 ClientFlow. 为现代服务型团队打造的预约 CRM。"
   }
 } as const;
 
@@ -779,7 +719,7 @@ function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function ProjectPreview({ t }: { t: PageCopy }) {
+function ProductPreview({ t }: { t: PageCopy }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28, scale: 0.98 }}
@@ -804,19 +744,20 @@ function ProjectPreview({ t }: { t: PageCopy }) {
             <span className="inline-flex rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300">
               {t.preview.badge}
             </span>
-            <h3 className="mt-5 text-3xl font-bold leading-tight text-white">
+            <h3 className="mt-5 text-4xl font-bold leading-tight text-white">
               {t.preview.title}
             </h3>
             <p className="mt-4 leading-7 text-white/65">{t.preview.body}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="#project-brief"
-                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink"
+                href="#demo"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink"
               >
+                <Play className="h-4 w-4 fill-ink" />
                 {t.preview.primary}
               </a>
               <a
-                href="#packages"
+                href="#pricing"
                 className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white"
               >
                 {t.preview.secondary}
@@ -843,15 +784,15 @@ function ProjectPreview({ t }: { t: PageCopy }) {
             <div className="rounded-lg border border-white/10 bg-white/[0.06] p-5">
               <div className="mb-5 flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-white/55">{t.preview.sectionLabel}</p>
+                  <p className="text-sm text-white/55">{t.preview.queueTitle}</p>
                   <h3 className="mt-1 text-lg font-semibold text-white">
-                    {t.preview.sectionTitle}
+                    Client activity
                   </h3>
                 </div>
-                <BadgeCheck className="h-6 w-6 text-emerald-300" />
+                <Inbox className="h-6 w-6 text-emerald-300" />
               </div>
               <div className="space-y-3">
-                {t.preview.checks.map((item, index) => (
+                {t.preview.queue.map((item, index) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, x: 12 }}
@@ -859,7 +800,7 @@ function ProjectPreview({ t }: { t: PageCopy }) {
                     transition={{ duration: 0.35, delay: 0.35 + index * 0.08 }}
                     className="flex items-center gap-3 rounded-lg bg-white/[0.06] p-3 text-sm text-white/75"
                   >
-                    <Check className="h-4 w-4 text-emerald-300" />
+                    <ClipboardCheck className="h-4 w-4 text-emerald-300" />
                     {item}
                   </motion.div>
                 ))}
@@ -874,62 +815,66 @@ function ProjectPreview({ t }: { t: PageCopy }) {
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
-  const [selectedPackageId, setSelectedPackageId] = useState("growth");
+  const [selectedPlanId, setSelectedPlanId] = useState("studio");
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     business: "",
     goal: "",
-    timeline: "month"
+    teamSize: "small"
   });
 
   const t = content[locale];
-  const selectedPackage =
-    t.packages.find((plan) => plan.id === selectedPackageId) ?? t.packages[1];
-  const selectedTimeline =
-    t.brief.timelines.find((timeline) => timeline.id === form.timeline)?.label ??
-    t.brief.timelines[1].label;
+  const selectedPlan =
+    t.pricing.find((plan) => plan.id === selectedPlanId) ?? t.pricing[1];
+  const selectedTeamSize =
+    t.demo.teamSizes.find((teamSize) => teamSize.id === form.teamSize)?.label ??
+    t.demo.teamSizes[1].label;
 
-  const briefText = useMemo(
+  const requestText = useMemo(
     () =>
-      `${t.brief.emailSubject}\n${t.brief.emailLabels.package}: ${selectedPackage.name}\n${t.brief.emailLabels.name}: ${form.name}\n${t.brief.emailLabels.email}: ${form.email}\n${t.brief.emailLabels.business}: ${form.business}\n${t.brief.emailLabels.timeline}: ${selectedTimeline}\n${t.brief.emailLabels.goal}: ${form.goal}`,
-    [form, selectedPackage.name, selectedTimeline, t]
+      `${t.demo.emailSubject}\n${t.demo.emailLabels.plan}: ${selectedPlan.name}\n${t.demo.emailLabels.name}: ${form.name}\n${t.demo.emailLabels.email}: ${form.email}\n${t.demo.emailLabels.business}: ${form.business}\n${t.demo.emailLabels.teamSize}: ${selectedTeamSize}\n${t.demo.emailLabels.goal}: ${form.goal}`,
+    [form, selectedPlan.name, selectedTeamSize, t]
   );
 
-  function choosePackage(id: string) {
-    setSelectedPackageId(id);
-    scrollToId("project-brief");
+  function choosePlan(id: string) {
+    setSelectedPlanId(id);
+    scrollToId("demo");
   }
 
-  async function copyBrief() {
+  async function copyRequest() {
     try {
-      await navigator.clipboard.writeText(briefText);
+      await navigator.clipboard.writeText(requestText);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.location.href = `mailto:hello@example.com?subject=${encodeURIComponent(
-        t.brief.emailSubject
-      )}&body=${encodeURIComponent(briefText)}`;
+      window.location.href = `mailto:hello@clientflow.app?subject=${encodeURIComponent(
+        t.demo.emailSubject
+      )}&body=${encodeURIComponent(requestText)}`;
     }
   }
 
-  function submitBrief(event: FormEvent<HTMLFormElement>) {
+  function submitDemo(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`${t.brief.emailSubject} - ${selectedPackage.name}`);
-    const body = encodeURIComponent(briefText);
-    window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`;
+    const subject = encodeURIComponent(`${t.demo.emailSubject} - ${selectedPlan.name}`);
+    const body = encodeURIComponent(requestText);
+    window.location.href = `mailto:hello@clientflow.app?subject=${subject}&body=${body}`;
   }
 
   return (
-    <main id="top" lang={locale === "en" ? "en" : locale === "zhTW" ? "zh-Hant" : "zh-Hans"} className="overflow-hidden bg-white">
+    <main
+      id="top"
+      lang={locale === "en" ? "en" : locale === "zhTW" ? "zh-Hant" : "zh-Hans"}
+      className="overflow-hidden bg-white"
+    >
       <section className="relative bg-hero-mesh px-5 pb-20 pt-5 sm:px-6 lg:px-8">
         <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 rounded-full border border-slate-200/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur">
           <a href="#top" className="flex items-center gap-2 font-bold text-ink">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white">
               <Rocket className="h-4 w-4" />
             </span>
-            LandingLab
+            ClientFlow
           </a>
           <div className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
             {t.nav.map((item) => (
@@ -956,7 +901,7 @@ export default function Home() {
               ))}
             </div>
             <a
-              href="#project-brief"
+              href="#demo"
               className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
             >
               {t.navCta}
@@ -981,17 +926,17 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="#project-brief"
+                href="#demo"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-iris px-7 py-4 text-base font-semibold text-white shadow-glow transition hover:bg-[#5B4BE8] sm:w-auto"
               >
                 {t.hero.primary}
                 <ArrowRight className="h-5 w-5" />
               </a>
               <a
-                href="#packages"
+                href="#pricing"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-ink shadow-sm transition hover:border-slate-300 sm:w-auto"
               >
-                <BriefcaseBusiness className="h-5 w-5" />
+                <BarChart3 className="h-5 w-5" />
                 {t.hero.secondary}
               </a>
             </div>
@@ -1008,60 +953,23 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <ProjectPreview t={t} />
+          <ProductPreview t={t} />
         </div>
       </section>
 
-      <section id="clients" className="px-5 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <SectionLabel>{t.clients.label}</SectionLabel>
-            <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.clients.title}
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{t.clients.body}</p>
-            <a
-              href="#project-brief"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-white transition hover:bg-slate-800"
-            >
-              {t.clients.cta}
-              <FileText className="h-5 w-5" />
-            </a>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {t.clients.types.map((type, index) => (
-              <motion.div
-                key={type}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-lavender text-iris">
-                  <Check className="h-5 w-5" />
-                </div>
-                <p className="mt-5 text-lg font-bold leading-7 text-ink">{type}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="deliverables" className="bg-cloud px-5 py-24 sm:px-6 lg:px-8">
+      <section id="product" className="px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.deliverables.label}</SectionLabel>
+            <SectionLabel>{t.product.label}</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.deliverables.title}
+              {t.product.title}
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{t.deliverables.body}</p>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{t.product.body}</p>
           </div>
 
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {t.deliverables.items.map((item, index) => {
-              const Icon = deliverableIcons[index];
+            {t.product.items.map((item, index) => {
+              const Icon = featureIcons[index];
               return (
                 <motion.div
                   key={item.title}
@@ -1084,18 +992,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="process" className="px-5 py-24 sm:px-6 lg:px-8">
+      <section id="workflow" className="bg-cloud px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <SectionLabel>{t.process.label}</SectionLabel>
+              <SectionLabel>{t.workflow.label}</SectionLabel>
               <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-                {t.process.title}
+                {t.workflow.title}
               </h2>
-              <p className="mt-5 text-lg leading-8 text-slate-600">{t.process.body}</p>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{t.workflow.body}</p>
             </div>
             <div className="grid gap-4">
-              {t.process.steps.map((step, index) => (
+              {t.workflow.steps.map((step, index) => (
                 <motion.div
                   key={step.title}
                   variants={fadeUp}
@@ -1121,20 +1029,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="packages" className="bg-cloud px-5 py-24 sm:px-6 lg:px-8">
+      <section id="pricing" className="px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.packagesSection.label}</SectionLabel>
+            <SectionLabel>{t.pricingSection.label}</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.packagesSection.title}
+              {t.pricingSection.title}
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              {t.packagesSection.body}
+              {t.pricingSection.body}
             </p>
           </div>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {t.packages.map((plan) => (
+            {t.pricing.map((plan) => (
               <motion.div
                 key={plan.id}
                 variants={fadeUp}
@@ -1150,14 +1058,14 @@ export default function Home() {
               >
                 {plan.highlighted ? (
                   <span className="absolute right-6 top-6 rounded-full bg-white px-3 py-1 text-xs font-bold text-iris">
-                    {t.packagesSection.popular}
+                    {t.pricingSection.popular}
                   </span>
                 ) : null}
                 <h3 className="text-2xl font-bold">{plan.name}</h3>
-                <div className="mt-6 flex items-end gap-2">
+                <div className="mt-6 flex items-end gap-1">
                   <span className="text-5xl font-bold">{plan.price}</span>
                   <span className={plan.highlighted ? "text-white/60" : "text-slate-500"}>
-                    {plan.timeline}
+                    {plan.period}
                   </span>
                 </div>
                 <p className={`mt-5 leading-7 ${plan.highlighted ? "text-white/70" : "text-slate-600"}`}>
@@ -1165,14 +1073,14 @@ export default function Home() {
                 </p>
                 <button
                   type="button"
-                  onClick={() => choosePackage(plan.id)}
+                  onClick={() => choosePlan(plan.id)}
                   className={`mt-8 inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-semibold transition ${
                     plan.highlighted
                       ? "bg-white text-ink hover:bg-slate-100"
                       : "bg-ink text-white hover:bg-slate-800"
                   }`}
                 >
-                  {t.packagesSection.select} {plan.name}
+                  {t.pricingSection.select} {plan.name}
                 </button>
                 <div className="mt-8 space-y-4">
                   {plan.includes.map((item) => (
@@ -1190,17 +1098,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 py-24 sm:px-6 lg:px-8">
+      <section id="reviews" className="bg-cloud px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.proof.label}</SectionLabel>
+            <SectionLabel>{t.reviews.label}</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.proof.title}
+              {t.reviews.title}
             </h2>
           </div>
 
           <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {t.proof.testimonials.map((testimonial) => (
+            {t.reviews.testimonials.map((testimonial) => (
               <motion.figure
                 key={testimonial.name}
                 variants={fadeUp}
@@ -1228,20 +1136,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="project-brief" className="bg-ink px-5 py-24 text-white sm:px-6 lg:px-8">
+      <section id="demo" className="bg-ink px-5 py-24 text-white sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <SectionLabel>{t.brief.label}</SectionLabel>
+            <SectionLabel>{t.demo.label}</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal sm:text-5xl">
-              {t.brief.title}
+              {t.demo.title}
             </h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">{t.brief.body}</p>
+            <p className="mt-5 text-lg leading-8 text-white/70">{t.demo.body}</p>
             <div className="mt-8 grid gap-3">
               <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-                <p className="text-sm text-white/45">{t.brief.selectedPackage}</p>
-                <p className="mt-1 font-semibold text-white">{selectedPackage.name}</p>
+                <p className="text-sm text-white/45">{t.demo.selectedPlan}</p>
+                <p className="mt-1 font-semibold text-white">{selectedPlan.name}</p>
               </div>
-              {t.brief.stats.map(([label, value]) => (
+              {t.demo.highlights.map(([label, value]) => (
                 <div key={label} className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
                   <p className="text-sm text-white/45">{label}</p>
                   <p className="mt-1 font-semibold text-white">{value}</p>
@@ -1250,62 +1158,62 @@ export default function Home() {
             </div>
           </div>
 
-          <form onSubmit={submitBrief} className="rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft">
+          <form onSubmit={submitDemo} className="rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft">
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-semibold">
-                {t.brief.labels.name}
+                {t.demo.labels.name}
                 <input
                   required
                   value={form.name}
                   onChange={(event) => setForm({ ...form, name: event.target.value })}
                   className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                  placeholder={t.brief.placeholders.name}
+                  placeholder={t.demo.placeholders.name}
                 />
               </label>
               <label className="grid gap-2 text-sm font-semibold">
-                {t.brief.labels.email}
+                {t.demo.labels.email}
                 <input
                   required
                   type="email"
                   value={form.email}
                   onChange={(event) => setForm({ ...form, email: event.target.value })}
                   className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                  placeholder={t.brief.placeholders.email}
+                  placeholder={t.demo.placeholders.email}
                 />
               </label>
             </div>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.brief.labels.business}
+              {t.demo.labels.business}
               <input
                 required
                 value={form.business}
                 onChange={(event) => setForm({ ...form, business: event.target.value })}
                 className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                placeholder={t.brief.placeholders.business}
+                placeholder={t.demo.placeholders.business}
               />
             </label>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.brief.labels.timeline}
+              {t.demo.labels.teamSize}
               <select
-                value={form.timeline}
-                onChange={(event) => setForm({ ...form, timeline: event.target.value })}
+                value={form.teamSize}
+                onChange={(event) => setForm({ ...form, teamSize: event.target.value })}
                 className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
               >
-                {t.brief.timelines.map((timeline) => (
-                  <option key={timeline.id} value={timeline.id}>
-                    {timeline.label}
+                {t.demo.teamSizes.map((teamSize) => (
+                  <option key={teamSize.id} value={teamSize.id}>
+                    {teamSize.label}
                   </option>
                 ))}
               </select>
             </label>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.brief.labels.goal}
+              {t.demo.labels.goal}
               <textarea
                 required
                 value={form.goal}
                 onChange={(event) => setForm({ ...form, goal: event.target.value })}
                 className="min-h-32 resize-none rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                placeholder={t.brief.placeholders.goal}
+                placeholder={t.demo.placeholders.goal}
               />
             </label>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -1314,15 +1222,15 @@ export default function Home() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-iris px-6 py-3 font-semibold text-white transition hover:bg-[#5B4BE8]"
               >
                 <Mail className="h-5 w-5" />
-                {t.brief.submit}
+                {t.demo.submit}
               </button>
               <button
                 type="button"
-                onClick={copyBrief}
+                onClick={copyRequest}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-ink transition hover:border-slate-300"
               >
                 <CopyCheck className="h-5 w-5" />
-                {copied ? t.brief.copied : t.brief.copy}
+                {copied ? t.demo.copied : t.demo.copy}
               </button>
             </div>
           </form>
@@ -1359,7 +1267,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl rounded-xl bg-ink px-6 py-16 text-center text-white shadow-soft sm:px-10 lg:py-20">
           <div className="mx-auto max-w-3xl">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg bg-white text-iris">
-              <TrendingUp className="h-7 w-7" />
+              <Zap className="h-7 w-7" />
             </div>
             <h2 className="mt-7 text-4xl font-bold tracking-normal sm:text-5xl">
               {t.finalCta.title}
@@ -1367,18 +1275,18 @@ export default function Home() {
             <p className="mt-5 text-lg leading-8 text-white/70">{t.finalCta.body}</p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="#project-brief"
+                href="#demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-ink transition hover:bg-slate-100"
               >
                 {t.finalCta.primary}
-                <Upload className="h-5 w-5" />
+                <ArrowRight className="h-5 w-5" />
               </a>
               <a
-                href="#deliverables"
+                href="#pricing"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
               >
                 {t.finalCta.secondary}
-                <ArrowRight className="h-5 w-5" />
+                <BarChart3 className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -1391,7 +1299,7 @@ export default function Home() {
         aria-label="Back to top"
         className="fixed bottom-5 right-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-ink shadow-soft transition hover:-translate-y-1 hover:border-slate-300"
       >
-        <Zap className="h-5 w-5" />
+        <ArrowUp className="h-5 w-5" />
       </button>
 
       <footer className="px-5 py-10 text-center text-sm text-slate-500">
