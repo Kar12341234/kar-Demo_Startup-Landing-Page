@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ClientFlow | Booking CRM for Service Teams",
+  title: "BrightNest Cleaning | Premium Home Cleaning",
   description:
-    "A customer-facing SaaS landing page demo for an appointment booking CRM built for service teams.",
+    "A customer-facing website demo for a premium local home cleaning service brand.",
   openGraph: {
-    title: "ClientFlow | Booking CRM for Service Teams",
+    title: "BrightNest Cleaning | Premium Home Cleaning",
     description:
-      "Turn website visitors into booked appointments with booking pages, reminders, client records, payments, and reporting.",
+      "Book reliable home cleaning with clear packages, vetted cleaners, eco-friendly supplies, and simple quote requests.",
     type: "website"
   }
 };
