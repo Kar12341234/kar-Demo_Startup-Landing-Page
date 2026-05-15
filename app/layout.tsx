@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FlowPilot AI | Productivity SaaS Platform",
+  title: "LandingLab | Custom Landing Page Service",
   description:
-    "A modern SaaS landing page demo for an AI productivity platform, built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.",
+    "A premium custom landing page demo for founders, consultants, creators, service businesses, and agencies.",
   openGraph: {
-    title: "FlowPilot AI | Productivity SaaS Platform",
+    title: "LandingLab | Custom Landing Page Service",
     description:
-      "Automate work, connect tools, and track team performance with an AI productivity SaaS platform.",
+      "Conversion-focused landing page design and development for marketplace clients who need a clear offer and working CTA flow.",
     type: "website"
   }
 };
