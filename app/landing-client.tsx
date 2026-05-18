@@ -6,702 +6,166 @@ import {
   ArrowRight,
   ArrowUp,
   BarChart3,
-  CalendarCheck,
+  Bot,
   Check,
   ChevronDown,
   ClipboardCheck,
   CopyCheck,
-  Home as HomeIcon,
+  DatabaseZap,
+  Gauge,
+  Link2,
   Mail,
-  MapPin,
-  MessageSquareText,
   Play,
   ShieldCheck,
   Sparkles,
-  SprayCan,
   Star,
-  Timer,
-  UsersRound,
+  Workflow,
   Zap
 } from "lucide-react";
 
-type Locale = "en" | "zhTW" | "zhCN";
-
-const localeOptions: Array<{ id: Locale; label: string }> = [
-  { id: "en", label: "EN" },
-  { id: "zhTW", label: "繁" },
-  { id: "zhCN", label: "简" }
+const navItems = [
+  { label: "Features", href: "#features" },
+  { label: "Workflow", href: "#workflow" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" }
 ];
 
-const serviceIcons = [
-  Home,
-  SprayCan,
-  CalendarCheck,
-  ShieldCheck,
-  UsersRound,
-  BarChart3
-];
+const trustedLogos = ["Northstar", "Relay", "Vertex", "Atlas", "Foundry"];
 
-const content = {
-  en: {
-    brand: "BrightNest",
-    nav: [
-      { label: "Services", href: "#services" },
-      { label: "How it works", href: "#workflow" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Reviews", href: "#reviews" },
-      { label: "FAQ", href: "#faq" }
-    ],
-    navCta: "Book cleaning",
-    hero: {
-      label: "Premium home cleaning in your neighborhood",
-      title: "A spotless home without spending your weekend cleaning it.",
-      body:
-        "BrightNest gives busy families, renters, and professionals a reliable cleaning team, simple online booking, clear pricing, and reminders before every visit.",
-      primary: "Get an instant quote",
-      secondary: "View packages",
-      proof: ["Vetted cleaners", "Eco-friendly supplies", "Flexible scheduling"]
-    },
-    preview: {
-      browser: "brightnest.co/booking",
-      badge: "Next available",
-      title: "Tomorrow, 10:00 AM",
-      body: "Choose your home size, cleaning type, preferred time, and extras in a booking flow made for busy homeowners.",
-      primary: "Start booking",
-      secondary: "Compare plans",
-      metrics: [
-        ["Avg rating", "4.9/5", "2,400+ reviews"],
-        ["Arrival window", "30 min", "reliable"],
-        ["Repeat clients", "68%", "monthly"]
-      ],
-      queueTitle: "Today’s schedule",
-      queue: ["Deep clean in Central District", "Move-out cleaning at 2:00 PM", "Recurring weekly visit confirmed"]
-    },
-    services: {
-      label: "Services",
-      title: "Cleaning packages for real homes, real schedules, and real mess.",
-      body:
-        "From weekly upkeep to move-out cleaning, BrightNest keeps the booking process clear and the service experience consistent.",
-      items: [
-        {
-          title: "Standard home cleaning",
-          description: "Dusting, vacuuming, kitchen surfaces, bathrooms, floors, beds, and everyday reset work."
-        },
-        {
-          title: "Deep cleaning",
-          description: "Detailed cleaning for neglected spaces, appliances, fixtures, edges, and hard-to-reach areas."
-        },
-        {
-          title: "Recurring visits",
-          description: "Weekly, bi-weekly, or monthly cleaning plans with reminders and the same preferred team when possible."
-        },
-        {
-          title: "Vetted professionals",
-          description: "Background-checked cleaners, clear arrival windows, and service notes for every visit."
-        },
-        {
-          title: "Family-safe supplies",
-          description: "Eco-conscious products suitable for homes with children, pets, and sensitive surfaces."
-        },
-        {
-          title: "Clear service reports",
-          description: "After each clean, receive a short summary of completed rooms, extras, and follow-up notes."
-        }
-      ]
-    },
-    workflow: {
-      label: "How it works",
-      title: "Book a trusted cleaner in three simple steps.",
-      body: "A service flow designed for local customers who want confidence before they book.",
-      steps: [
-        {
-          label: "01",
-          title: "Tell us about your home",
-          description: "Choose home size, cleaning type, rooms, extras, and any special instructions."
-        },
-        {
-          label: "02",
-          title: "Pick your preferred time",
-          description: "Select available time slots, set reminders, and get a confirmation before the visit."
-        },
-        {
-          label: "03",
-          title: "Relax after the clean",
-          description: "Your cleaner completes the checklist, sends a short report, and leaves your home ready to enjoy."
-        }
-      ]
-    },
-    pricingSection: {
-      label: "Pricing",
-      title: "Simple starting prices. No surprise fees.",
-      body: "Final quotes depend on home size, condition, extras, and travel area, but every booking starts with a clear package.",
-      popular: "Most booked",
-      select: "Choose"
-    },
-    pricing: [
-      {
-        id: "essential",
-        name: "Essential",
-        price: "$89+",
-        period: "/visit",
-        description: "For regular upkeep in apartments and smaller homes.",
-        includes: ["Kitchen and bathrooms", "Floors and dusting", "Bedroom reset"],
-        highlighted: false
-      },
-      {
-        id: "deep",
-        name: "Deep Clean",
-        price: "$179+",
-        period: "/visit",
-        description: "For first-time cleans, seasonal resets, and homes needing extra detail.",
-        includes: ["Inside appliances", "Fixtures and edges", "Detailed room checklist"],
-        highlighted: true
-      },
-      {
-        id: "move",
-        name: "Move-In / Out",
-        price: "$249+",
-        period: "/visit",
-        description: "For empty homes, rentals, property handoff, and move preparation.",
-        includes: ["Cabinets and closets", "Baseboards", "Priority scheduling"],
-        highlighted: false
-      }
-    ],
-    reviews: {
-      label: "Reviews",
-      title: "Trusted by people who want their home to feel ready again.",
-      testimonials: [
-        {
-          quote:
-            "Booking took less than two minutes, and the team arrived exactly when promised. The kitchen looked brand new.",
-          name: "Maya Lin",
-          role: "Apartment owner"
-        },
-        {
-          quote:
-            "We use BrightNest every two weeks. The reminders, checklist, and consistent quality make it easy to keep the house under control.",
-          name: "Ryan Brooks",
-          role: "Parent of two"
-        },
-        {
-          quote:
-            "The move-out clean helped us hand over the apartment without stress. Clear pricing and excellent communication.",
-          name: "Sofia Martinez",
-          role: "Relocation client"
-        }
-      ]
-    },
-    quote: {
-      label: "Get a quote",
-      title: "Tell us what needs cleaning.",
-      body:
-        "Choose a package, share your home details, and BrightNest will prepare a clear quote with available time slots.",
-      selectedPlan: "Selected package",
-      highlights: [
-        ["Response time", "Usually within 1 business hour"],
-        ["Best for", "Homes, apartments, rentals, and move-out cleaning"]
-      ],
-      labels: {
-        name: "Name",
-        email: "Email",
-        homeType: "Home type",
-        rooms: "Rooms",
-        details: "Cleaning notes"
-      },
-      placeholders: {
-        name: "Your name",
-        email: "you@example.com",
-        homeType: "Apartment, house, rental, office...",
-        details: "Example: 2 bathrooms, pet hair, oven cleaning, preferred date..."
-      },
-      roomOptions: [
-        { id: "studio", label: "Studio / 1 bedroom" },
-        { id: "two", label: "2-3 bedrooms" },
-        { id: "large", label: "4+ bedrooms" }
-      ],
-      submit: "Request quote",
-      copy: "Copy request",
-      copied: "Request copied",
-      emailSubject: "BrightNest cleaning quote request",
-      emailLabels: {
-        package: "Package",
-        name: "Name",
-        email: "Email",
-        homeType: "Home type",
-        rooms: "Rooms",
-        details: "Cleaning notes"
-      }
-    },
-    faq: {
-      label: "FAQ",
-      title: "Questions before booking your first clean.",
-      body: "BrightNest keeps the process simple so customers know exactly what to expect.",
-      items: [
-        {
-          question: "Do I need to be home during the cleaning?",
-          answer:
-            "No. Many customers provide access instructions. You can also stay home if you prefer."
-        },
-        {
-          question: "Do cleaners bring supplies?",
-          answer:
-            "Yes. BrightNest teams bring standard eco-friendly supplies and equipment unless you request otherwise."
-        },
-        {
-          question: "Can I book recurring service?",
-          answer:
-            "Yes. Weekly, bi-weekly, and monthly cleaning plans are available after your first visit."
-        },
-        {
-          question: "How is the final quote calculated?",
-          answer:
-            "Quotes are based on home size, cleaning type, condition, extras, and travel area."
-        }
-      ]
-    },
-    finalCta: {
-      title: "Ready to come home to a cleaner space?",
-      body: "Start with a clear quote, choose a time that works, and let BrightNest handle the reset.",
-      primary: "Get my quote",
-      secondary: "Compare packages"
-    },
-    footer: "(c) 2026 BrightNest Cleaning. Premium home cleaning for busy households."
+const features = [
+  {
+    icon: Workflow,
+    title: "Workflow automation",
+    description:
+      "Turn recurring handoffs, approvals, and follow-ups into reliable workflows that run in the background."
   },
-  zhTW: {
-    brand: "BrightNest",
-    nav: [
-      { label: "服務", href: "#services" },
-      { label: "流程", href: "#workflow" },
-      { label: "價格", href: "#pricing" },
-      { label: "評價", href: "#reviews" },
-      { label: "FAQ", href: "#faq" }
-    ],
-    navCta: "預約清潔",
-    hero: {
-      label: "你附近的高級居家清潔服務",
-      title: "不用把週末花在打掃，也能擁有乾淨舒服的家。",
-      body:
-        "BrightNest 為忙碌家庭、租客和專業人士提供可靠清潔團隊、簡單線上預約、清楚報價和每次服務前提醒。",
-      primary: "取得即時報價",
-      secondary: "查看方案",
-      proof: ["清潔員已審核", "環保清潔用品", "彈性預約時間"]
-    },
-    preview: {
-      browser: "brightnest.co/booking",
-      badge: "最快可預約",
-      title: "明天 10:00 AM",
-      body: "依照房屋大小、清潔類型、偏好時間和加購服務，完成為忙碌屋主設計的預約流程。",
-      primary: "開始預約",
-      secondary: "比較方案",
-      metrics: [
-        ["平均評分", "4.9/5", "2,400+ 評價"],
-        ["到達時段", "30 分鐘", "可靠"],
-        ["回訪客戶", "68%", "每月"]
-      ],
-      queueTitle: "今日排程",
-      queue: ["Central District 深度清潔", "2:00 PM 搬家退租清潔", "每週固定清潔已確認"]
-    },
-    services: {
-      label: "服務",
-      title: "適合真實家庭、真實行程和真實髒亂的清潔方案。",
-      body:
-        "從每週維護到搬家清潔，BrightNest 讓預約流程清楚，服務品質穩定。",
-      items: [
-        {
-          title: "標準居家清潔",
-          description: "除塵、吸塵、廚房表面、浴室、地板、床鋪整理和日常重置。"
-        },
-        {
-          title: "深度清潔",
-          description: "針對長期忽略區域、家電、五金、邊角和難清潔位置做細節清潔。"
-        },
-        {
-          title: "定期清潔",
-          description: "每週、雙週或每月清潔計劃，提供提醒並盡量安排固定團隊。"
-        },
-        {
-          title: "可靠專業人員",
-          description: "已審核清潔員、清楚到達時段，以及每次服務的備註記錄。"
-        },
-        {
-          title: "家人友善用品",
-          description: "使用適合孩子、寵物和敏感表面的環保清潔產品。"
-        },
-        {
-          title: "清楚服務報告",
-          description: "每次清潔後收到完成房間、加購項目和後續備註摘要。"
-        }
-      ]
-    },
-    workflow: {
-      label: "流程",
-      title: "三步預約可靠清潔團隊。",
-      body: "為希望先建立信任再下單的本地客戶設計的服務流程。",
-      steps: [
-        {
-          label: "01",
-          title: "告訴我們你的房屋情況",
-          description: "選擇房屋大小、清潔類型、房間、加購項目和特殊指示。"
-        },
-        {
-          label: "02",
-          title: "選擇偏好時間",
-          description: "選擇可預約時段、設定提醒，並在服務前收到確認。"
-        },
-        {
-          label: "03",
-          title: "享受清潔後的家",
-          description: "清潔員完成 checklist，發送簡短報告，讓你的家恢復舒服狀態。"
-        }
-      ]
-    },
-    pricingSection: {
-      label: "價格",
-      title: "清楚起始價格，沒有隱藏費用。",
-      body: "最終報價取決於房屋大小、狀況、加購項目和服務區域，但每次預約都有清楚方案起點。",
-      popular: "最多人預約",
-      select: "選擇"
-    },
-    pricing: [
-      {
-        id: "essential",
-        name: "基礎清潔",
-        price: "$89+",
-        period: "/次",
-        description: "適合公寓和小型住宅的日常維護。",
-        includes: ["廚房和浴室", "地板和除塵", "臥室整理"],
-        highlighted: false
-      },
-      {
-        id: "deep",
-        name: "深度清潔",
-        price: "$179+",
-        period: "/次",
-        description: "適合首次清潔、季節重置和需要更多細節的家庭。",
-        includes: ["家電內部", "五金和邊角", "詳細房間 checklist"],
-        highlighted: true
-      },
-      {
-        id: "move",
-        name: "搬家清潔",
-        price: "$249+",
-        period: "/次",
-        description: "適合空屋、租屋交接、物業交付和搬家準備。",
-        includes: ["櫃子和衣櫃", "踢腳線", "優先排程"],
-        highlighted: false
-      }
-    ],
-    reviews: {
-      label: "評價",
-      title: "受到希望重新擁有舒適居家空間的客戶信任。",
-      testimonials: [
-        {
-          quote: "預約不到兩分鐘就完成，團隊準時到達。廚房看起來像新的一樣。",
-          name: "Maya Lin",
-          role: "公寓屋主"
-        },
-        {
-          quote: "我們每兩週使用 BrightNest。提醒、checklist 和穩定品質讓家裡容易維持。",
-          name: "Ryan Brooks",
-          role: "兩個孩子的父親"
-        },
-        {
-          quote: "搬家退租清潔讓交屋過程輕鬆很多。價格清楚，溝通也很好。",
-          name: "Sofia Martinez",
-          role: "搬家客戶"
-        }
-      ]
-    },
-    quote: {
-      label: "取得報價",
-      title: "告訴我們需要清潔的內容。",
-      body: "選擇方案，留下房屋資料，BrightNest 會提供清楚報價和可預約時段。",
-      selectedPlan: "已選方案",
-      highlights: [
-        ["回覆時間", "通常 1 個工作小時內"],
-        ["最適合", "住宅、公寓、出租屋和搬家清潔"]
-      ],
-      labels: {
-        name: "姓名",
-        email: "Email",
-        homeType: "房屋類型",
-        rooms: "房間數",
-        details: "清潔備註"
-      },
-      placeholders: {
-        name: "你的姓名",
-        email: "you@example.com",
-        homeType: "公寓、住宅、出租屋、辦公室...",
-        details: "例：2 間浴室、寵物毛、烤箱清潔、偏好日期..."
-      },
-      roomOptions: [
-        { id: "studio", label: "套房 / 1 房" },
-        { id: "two", label: "2-3 房" },
-        { id: "large", label: "4 房以上" }
-      ],
-      submit: "送出報價需求",
-      copy: "複製需求",
-      copied: "已複製",
-      emailSubject: "BrightNest 清潔報價需求",
-      emailLabels: {
-        package: "方案",
-        name: "姓名",
-        email: "Email",
-        homeType: "房屋類型",
-        rooms: "房間數",
-        details: "清潔備註"
-      }
-    },
-    faq: {
-      label: "FAQ",
-      title: "首次預約清潔前常見問題。",
-      body: "BrightNest 讓流程足夠簡單，讓客戶清楚知道會發生什麼。",
-      items: [
-        {
-          question: "清潔時我需要在家嗎？",
-          answer: "不需要。很多客戶會提供進入方式。如果你希望在家也完全可以。"
-        },
-        {
-          question: "清潔員會自備用品嗎？",
-          answer: "會。BrightNest 團隊會自備標準環保清潔用品和工具，除非你有特別要求。"
-        },
-        {
-          question: "可以預約定期清潔嗎？",
-          answer: "可以。首次服務後，可安排每週、雙週或每月清潔計劃。"
-        },
-        {
-          question: "最終報價怎麼計算？",
-          answer: "報價會根據房屋大小、清潔類型、房屋狀況、加購項目和服務區域計算。"
-        }
-      ]
-    },
-    finalCta: {
-      title: "準備回到一個更乾淨的家嗎？",
-      body: "從清楚報價開始，選擇適合你的時間，讓 BrightNest 幫你完成居家重置。",
-      primary: "取得我的報價",
-      secondary: "比較方案"
-    },
-    footer: "(c) 2026 BrightNest Cleaning. 為忙碌家庭打造的高級居家清潔。"
+  {
+    icon: Bot,
+    title: "AI operations assistant",
+    description:
+      "Summarize meetings, draft next steps, assign owners, and surface blockers before they slow the team down."
   },
-  zhCN: {
-    brand: "BrightNest",
-    nav: [
-      { label: "服务", href: "#services" },
-      { label: "流程", href: "#workflow" },
-      { label: "价格", href: "#pricing" },
-      { label: "评价", href: "#reviews" },
-      { label: "FAQ", href: "#faq" }
-    ],
-    navCta: "预约清洁",
-    hero: {
-      label: "你附近的高级居家清洁服务",
-      title: "不用把周末花在打扫，也能拥有干净舒服的家。",
-      body:
-        "BrightNest 为忙碌家庭、租客和专业人士提供可靠清洁团队、简单线上预约、清楚报价和每次服务前提醒。",
-      primary: "获取即时报价",
-      secondary: "查看套餐",
-      proof: ["清洁员已审核", "环保清洁用品", "弹性预约时间"]
-    },
-    preview: {
-      browser: "brightnest.co/booking",
-      badge: "最快可预约",
-      title: "明天 10:00 AM",
-      body: "按照房屋大小、清洁类型、偏好时间和加购服务，完成为忙碌屋主设计的预约流程。",
-      primary: "开始预约",
-      secondary: "比较套餐",
-      metrics: [
-        ["平均评分", "4.9/5", "2,400+ 评价"],
-        ["到达时段", "30 分钟", "可靠"],
-        ["回访客户", "68%", "每月"]
-      ],
-      queueTitle: "今日排程",
-      queue: ["Central District 深度清洁", "2:00 PM 搬家退租清洁", "每周固定清洁已确认"]
-    },
-    services: {
-      label: "服务",
-      title: "适合真实家庭、真实行程和真实脏乱的清洁套餐。",
-      body:
-        "从每周维护到搬家清洁，BrightNest 让预约流程清楚，服务品质稳定。",
-      items: [
-        {
-          title: "标准居家清洁",
-          description: "除尘、吸尘、厨房表面、浴室、地板、床铺整理和日常重置。"
-        },
-        {
-          title: "深度清洁",
-          description: "针对长期忽略区域、家电、五金、边角和难清洁位置做细节清洁。"
-        },
-        {
-          title: "定期清洁",
-          description: "每周、双周或每月清洁计划，提供提醒并尽量安排固定团队。"
-        },
-        {
-          title: "可靠专业人员",
-          description: "已审核清洁员、清楚到达时段，以及每次服务的备注记录。"
-        },
-        {
-          title: "家人友好用品",
-          description: "使用适合孩子、宠物和敏感表面的环保清洁产品。"
-        },
-        {
-          title: "清楚服务报告",
-          description: "每次清洁后收到完成房间、加购项目和后续备注摘要。"
-        }
-      ]
-    },
-    workflow: {
-      label: "流程",
-      title: "三步预约可靠清洁团队。",
-      body: "为希望先建立信任再下单的本地客户设计的服务流程。",
-      steps: [
-        {
-          label: "01",
-          title: "告诉我们你的房屋情况",
-          description: "选择房屋大小、清洁类型、房间、加购项目和特殊指示。"
-        },
-        {
-          label: "02",
-          title: "选择偏好时间",
-          description: "选择可预约时段、设置提醒，并在服务前收到确认。"
-        },
-        {
-          label: "03",
-          title: "享受清洁后的家",
-          description: "清洁员完成 checklist，发送简短报告，让你的家恢复舒服状态。"
-        }
-      ]
-    },
-    pricingSection: {
-      label: "价格",
-      title: "清楚起始价格，没有隐藏费用。",
-      body: "最终报价取决于房屋大小、状况、加购项目和服务区域，但每次预约都有清楚套餐起点。",
-      popular: "最多人预约",
-      select: "选择"
-    },
-    pricing: [
-      {
-        id: "essential",
-        name: "基础清洁",
-        price: "$89+",
-        period: "/次",
-        description: "适合公寓和小型住宅的日常维护。",
-        includes: ["厨房和浴室", "地板和除尘", "卧室整理"],
-        highlighted: false
-      },
-      {
-        id: "deep",
-        name: "深度清洁",
-        price: "$179+",
-        period: "/次",
-        description: "适合首次清洁、季节重置和需要更多细节的家庭。",
-        includes: ["家电内部", "五金和边角", "详细房间 checklist"],
-        highlighted: true
-      },
-      {
-        id: "move",
-        name: "搬家清洁",
-        price: "$249+",
-        period: "/次",
-        description: "适合空屋、租屋交接、物业交付和搬家准备。",
-        includes: ["柜子和衣柜", "踢脚线", "优先排程"],
-        highlighted: false
-      }
-    ],
-    reviews: {
-      label: "评价",
-      title: "受到希望重新拥有舒适居家空间的客户信任。",
-      testimonials: [
-        {
-          quote: "预约不到两分钟就完成，团队准时到达。厨房看起来像新的一样。",
-          name: "Maya Lin",
-          role: "公寓屋主"
-        },
-        {
-          quote: "我们每两周使用 BrightNest。提醒、checklist 和稳定品质让家里容易维持。",
-          name: "Ryan Brooks",
-          role: "两个孩子的父亲"
-        },
-        {
-          quote: "搬家退租清洁让交屋过程轻松很多。价格清楚，沟通也很好。",
-          name: "Sofia Martinez",
-          role: "搬家客户"
-        }
-      ]
-    },
-    quote: {
-      label: "获取报价",
-      title: "告诉我们需要清洁的内容。",
-      body: "选择套餐，留下房屋资料，BrightNest 会提供清楚报价和可预约时段。",
-      selectedPlan: "已选套餐",
-      highlights: [
-        ["回复时间", "通常 1 个工作小时内"],
-        ["最适合", "住宅、公寓、出租屋和搬家清洁"]
-      ],
-      labels: {
-        name: "姓名",
-        email: "Email",
-        homeType: "房屋类型",
-        rooms: "房间数",
-        details: "清洁备注"
-      },
-      placeholders: {
-        name: "你的姓名",
-        email: "you@example.com",
-        homeType: "公寓、住宅、出租屋、办公室...",
-        details: "例：2 间浴室、宠物毛、烤箱清洁、偏好日期..."
-      },
-      roomOptions: [
-        { id: "studio", label: "套房 / 1 房" },
-        { id: "two", label: "2-3 房" },
-        { id: "large", label: "4 房以上" }
-      ],
-      submit: "送出报价需求",
-      copy: "复制需求",
-      copied: "已复制",
-      emailSubject: "BrightNest 清洁报价需求",
-      emailLabels: {
-        package: "套餐",
-        name: "姓名",
-        email: "Email",
-        homeType: "房屋类型",
-        rooms: "房间数",
-        details: "清洁备注"
-      }
-    },
-    faq: {
-      label: "FAQ",
-      title: "首次预约清洁前常见问题。",
-      body: "BrightNest 让流程足够简单，让客户清楚知道会发生什么。",
-      items: [
-        {
-          question: "清洁时我需要在家吗？",
-          answer: "不需要。很多客户会提供进入方式。如果你希望在家也完全可以。"
-        },
-        {
-          question: "清洁员会自备用品吗？",
-          answer: "会。BrightNest 团队会自备标准环保清洁用品和工具，除非你有特别要求。"
-        },
-        {
-          question: "可以预约定期清洁吗？",
-          answer: "可以。首次服务后，可安排每周、双周或每月清洁计划。"
-        },
-        {
-          question: "最终报价怎么计算？",
-          answer: "报价会根据房屋大小、清洁类型、房屋状况、加购项目和服务区域计算。"
-        }
-      ]
-    },
-    finalCta: {
-      title: "准备回到一个更干净的家吗？",
-      body: "从清楚报价开始，选择适合你的时间，让 BrightNest 帮你完成居家重置。",
-      primary: "获取我的报价",
-      secondary: "比较套餐"
-    },
-    footer: "(c) 2026 BrightNest Cleaning. 为忙碌家庭打造的高级居家清洁。"
+  {
+    icon: Link2,
+    title: "Tool sync",
+    description:
+      "Connect Slack, Notion, Linear, HubSpot, Google Workspace, and internal tools without rebuilding your stack."
+  },
+  {
+    icon: BarChart3,
+    title: "Performance reporting",
+    description:
+      "Track cycle time, response speed, workload, saved hours, and revenue impact from a single dashboard."
+  },
+  {
+    icon: DatabaseZap,
+    title: "Unified knowledge",
+    description:
+      "Search across briefs, tickets, docs, CRM notes, and decisions so teams stop asking the same questions."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Admin controls",
+    description:
+      "Manage roles, workspace permissions, approval rules, and audit trails for safer AI-assisted execution."
   }
-} as const;
+];
 
-type PageCopy = (typeof content)[Locale];
+const steps = [
+  {
+    label: "01",
+    title: "Connect your operating stack",
+    description:
+      "Bring in the tools your team already uses and map the data that matters for decisions and handoffs."
+  },
+  {
+    label: "02",
+    title: "Design repeatable workflows",
+    description:
+      "Choose a template or describe the process. OpsPilot builds the task flow, reminders, and approval points."
+  },
+  {
+    label: "03",
+    title: "Measure and improve",
+    description:
+      "Review saved hours, bottlenecks, response times, and workflow ROI so every process gets sharper over time."
+  }
+];
+
+const plans = [
+  {
+    id: "starter",
+    name: "Starter",
+    price: "$39",
+    period: "/mo",
+    description: "For founders and small teams organizing early operating workflows.",
+    includes: ["3 connected tools", "10 AI workflows", "Basic reporting"],
+    highlighted: false
+  },
+  {
+    id: "growth",
+    name: "Growth",
+    price: "$99",
+    period: "/mo",
+    description: "For growing teams that need automation, visibility, and faster execution.",
+    includes: ["Unlimited workflows", "Advanced analytics", "Priority support"],
+    highlighted: true
+  },
+  {
+    id: "scale",
+    name: "Scale",
+    price: "$249",
+    period: "/mo",
+    description: "For companies that need controls, custom workflows, and cross-team reporting.",
+    includes: ["SSO and roles", "Custom integrations", "Dedicated onboarding"],
+    highlighted: false
+  }
+];
+
+const testimonials = [
+  {
+    quote:
+      "OpsPilot replaced our weekly status chase with workflows that update themselves. The team spends more time shipping and less time reporting.",
+    name: "Maya Chen",
+    role: "COO, Northstar Labs"
+  },
+  {
+    quote:
+      "We connected support, sales, and product in one afternoon. The dashboard gave us the operating picture we were missing.",
+    name: "Ethan Brooks",
+    role: "Founder, RelayStack"
+  },
+  {
+    quote:
+      "The AI summaries are practical, not gimmicky. They help every owner know what changed, what is blocked, and what needs action.",
+    name: "Priya Shah",
+    role: "VP Growth, Aster AI"
+  }
+];
+
+const faqs = [
+  {
+    question: "Can OpsPilot work with our current tools?",
+    answer:
+      "Yes. OpsPilot is designed to sit on top of your existing stack and connect common tools such as Slack, Notion, Linear, HubSpot, and Google Workspace."
+  },
+  {
+    question: "Do we need engineers to build workflows?",
+    answer:
+      "No. Most workflows can be created from templates or natural-language instructions. Technical teams can add custom rules when needed."
+  },
+  {
+    question: "What kind of teams is this best for?",
+    answer:
+      "OpsPilot is best for startup operators, SaaS teams, agencies, and growing companies that need repeatable workflows across sales, support, product, and operations."
+  },
+  {
+    question: "Is this ready for business use?",
+    answer:
+      "This portfolio demo shows a production-style landing page experience with responsive UI, functional CTAs, pricing selection, and a demo request flow."
+  }
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -721,7 +185,7 @@ function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function BookingPreview({ t }: { t: PageCopy }) {
+function DashboardPreview() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28, scale: 0.98 }}
@@ -737,39 +201,46 @@ function BookingPreview({ t }: { t: PageCopy }) {
             <span className="h-3 w-3 rounded-full bg-emerald-400" />
           </div>
           <div className="hidden rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white/70 sm:block">
-            {t.preview.browser}
+            opspilot.ai/dashboard
           </div>
         </div>
 
         <div className="dashboard-grid grid gap-4 p-4 lg:grid-cols-[0.9fr_1.1fr] lg:p-6">
           <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 text-left">
             <span className="inline-flex rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300">
-              {t.preview.badge}
+              Live workflow health
             </span>
             <h3 className="mt-5 text-4xl font-bold leading-tight text-white">
-              {t.preview.title}
+              184 hours saved this month
             </h3>
-            <p className="mt-4 leading-7 text-white/65">{t.preview.body}</p>
+            <p className="mt-4 leading-7 text-white/65">
+              Track active workflows, overdue handoffs, AI summaries, and team
+              capacity from one operating command center.
+            </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="#quote"
+                href="#demo"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink"
               >
                 <Play className="h-4 w-4 fill-ink" />
-                {t.preview.primary}
+                Watch demo
               </a>
               <a
                 href="#pricing"
                 className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white"
               >
-                {t.preview.secondary}
+                Compare plans
               </a>
             </div>
           </div>
 
           <div className="grid gap-4">
             <div className="grid gap-4 sm:grid-cols-3">
-              {t.preview.metrics.map(([label, value, note]) => (
+              {[
+                ["Cycle time", "-28%", "improved"],
+                ["Open blockers", "12", "flagged"],
+                ["Automations", "48", "active"]
+              ].map(([label, value, note]) => (
                 <div
                   key={label}
                   className="rounded-lg border border-white/10 bg-white/[0.06] p-4"
@@ -786,15 +257,19 @@ function BookingPreview({ t }: { t: PageCopy }) {
             <div className="rounded-lg border border-white/10 bg-white/[0.06] p-5">
               <div className="mb-5 flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-white/55">{t.preview.queueTitle}</p>
+                  <p className="text-sm text-white/55">Today&apos;s AI queue</p>
                   <h3 className="mt-1 text-lg font-semibold text-white">
-                    Live booking board
+                    Recommended actions
                   </h3>
                 </div>
                 <ClipboardCheck className="h-6 w-6 text-emerald-300" />
               </div>
               <div className="space-y-3">
-                {t.preview.queue.map((item, index) => (
+                {[
+                  "Create renewal task for 8 high-intent accounts",
+                  "Summarize blockers from product standup",
+                  "Escalate support tickets waiting over 24 hours"
+                ].map((item, index) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, x: 12 }}
@@ -802,7 +277,7 @@ function BookingPreview({ t }: { t: PageCopy }) {
                     transition={{ duration: 0.35, delay: 0.35 + index * 0.08 }}
                     className="flex items-center gap-3 rounded-lg bg-white/[0.06] p-3 text-sm text-white/75"
                   >
-                    <MapPin className="h-4 w-4 text-emerald-300" />
+                    <Check className="h-4 w-4 text-emerald-300" />
                     {item}
                   </motion.div>
                 ))}
@@ -815,34 +290,28 @@ function BookingPreview({ t }: { t: PageCopy }) {
   );
 }
 
-export default function Home() {
-  const [locale, setLocale] = useState<Locale>("en");
-  const [selectedPlanId, setSelectedPlanId] = useState("deep");
+export default function LandingClient() {
+  const [selectedPlanId, setSelectedPlanId] = useState("growth");
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
-    homeType: "",
-    details: "",
-    rooms: "two"
+    company: "",
+    goal: "",
+    teamSize: "11-50"
   });
 
-  const t = content[locale];
-  const selectedPlan =
-    t.pricing.find((plan) => plan.id === selectedPlanId) ?? t.pricing[1];
-  const selectedRooms =
-    t.quote.roomOptions.find((room) => room.id === form.rooms)?.label ??
-    t.quote.roomOptions[1].label;
+  const selectedPlan = plans.find((plan) => plan.id === selectedPlanId) ?? plans[1];
 
   const requestText = useMemo(
     () =>
-      `${t.quote.emailSubject}\n${t.quote.emailLabels.package}: ${selectedPlan.name}\n${t.quote.emailLabels.name}: ${form.name}\n${t.quote.emailLabels.email}: ${form.email}\n${t.quote.emailLabels.homeType}: ${form.homeType}\n${t.quote.emailLabels.rooms}: ${selectedRooms}\n${t.quote.emailLabels.details}: ${form.details}`,
-    [form, selectedPlan.name, selectedRooms, t]
+      `OpsPilot demo request\nPlan: ${selectedPlan.name}\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nTeam size: ${form.teamSize}\nGoal: ${form.goal}`,
+    [form, selectedPlan.name]
   );
 
   function choosePlan(id: string) {
     setSelectedPlanId(id);
-    scrollToId("quote");
+    scrollToId("demo");
   }
 
   async function copyRequest() {
@@ -851,65 +320,43 @@ export default function Home() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.location.href = `mailto:hello@brightnest.co?subject=${encodeURIComponent(
-        t.quote.emailSubject
+      window.location.href = `mailto:hello@opspilot.ai?subject=${encodeURIComponent(
+        "OpsPilot demo request"
       )}&body=${encodeURIComponent(requestText)}`;
     }
   }
 
-  function submitQuote(event: FormEvent<HTMLFormElement>) {
+  function submitDemo(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`${t.quote.emailSubject} - ${selectedPlan.name}`);
+    const subject = encodeURIComponent(`OpsPilot demo request - ${selectedPlan.name}`);
     const body = encodeURIComponent(requestText);
-    window.location.href = `mailto:hello@brightnest.co?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@opspilot.ai?subject=${subject}&body=${body}`;
   }
 
   return (
-    <main
-      id="top"
-      lang={locale === "en" ? "en" : locale === "zhTW" ? "zh-Hant" : "zh-Hans"}
-      className="overflow-hidden bg-white"
-    >
+    <main id="top" className="overflow-hidden bg-white">
       <section className="relative bg-hero-mesh px-5 pb-20 pt-5 sm:px-6 lg:px-8">
         <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 rounded-full border border-slate-200/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur">
           <a href="#top" className="flex items-center gap-2 font-bold text-ink">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white">
-              <HomeIcon className="h-4 w-4" />
+              <Zap className="h-4 w-4" />
             </span>
-            {t.brand}
+            OpsPilot AI
           </a>
           <div className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
-            {t.nav.map((item) => (
+            {navItems.map((item) => (
               <a key={item.href} href={item.href} className="hover:text-ink">
                 {item.label}
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex rounded-full border border-slate-200 bg-slate-50 p-1">
-              {localeOptions.map((option) => (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => setLocale(option.id)}
-                  className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
-                    locale === option.id
-                      ? "bg-ink text-white shadow-sm"
-                      : "text-slate-500 hover:text-ink"
-                  }`}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-            <a
-              href="#quote"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
-            >
-              {t.navCta}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
+          <a
+            href="#demo"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
+          >
+            Book demo
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </nav>
 
         <div className="mx-auto max-w-7xl pt-20 text-center lg:pt-24">
@@ -919,31 +366,33 @@ export default function Home() {
             animate="visible"
             transition={{ duration: 0.6 }}
           >
-            <SectionLabel>{t.hero.label}</SectionLabel>
+            <SectionLabel>AI productivity platform for startup teams</SectionLabel>
             <h1 className="mx-auto mt-7 max-w-5xl text-balance text-5xl font-bold leading-[1.03] tracking-normal text-ink sm:text-6xl lg:text-7xl">
-              {t.hero.title}
+              Automate the work that slows your team down.
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-              {t.hero.body}
+              OpsPilot connects your tools, turns repeated processes into AI-assisted
+              workflows, and gives operators a clear dashboard for execution, blockers,
+              and business efficiency.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="#quote"
+                href="#demo"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-iris px-7 py-4 text-base font-semibold text-white shadow-glow transition hover:bg-[#5B4BE8] sm:w-auto"
               >
-                {t.hero.primary}
+                Book a product demo
                 <ArrowRight className="h-5 w-5" />
               </a>
               <a
-                href="#pricing"
+                href="#features"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-ink shadow-sm transition hover:border-slate-300 sm:w-auto"
               >
-                <Timer className="h-5 w-5" />
-                {t.hero.secondary}
+                <Gauge className="h-5 w-5" />
+                Explore features
               </a>
             </div>
             <div className="mx-auto mt-8 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
-              {t.hero.proof.map((item) => (
+              {["10 min setup", "No code workflows", "Founder-friendly pricing"].map((item) => (
                 <div
                   key={item}
                   className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white/75 px-4 py-3 text-sm font-semibold text-slate-700"
@@ -955,26 +404,47 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <BookingPreview t={t} />
+          <DashboardPreview />
         </div>
       </section>
 
-      <section id="services" className="px-5 py-24 sm:px-6 lg:px-8">
+      <section className="border-y border-slate-100 bg-white px-5 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            Trusted by fast-moving teams
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-end">
+            {trustedLogos.map((logo) => (
+              <span
+                key={logo}
+                className="rounded-full border border-slate-200 bg-slate-50 px-5 py-2 text-sm font-bold text-slate-500"
+              >
+                {logo}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.services.label}</SectionLabel>
+            <SectionLabel>Features</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.services.title}
+              A practical AI layer for everyday operations.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{t.services.body}</p>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Designed for teams that need fewer manual updates, better visibility,
+              and faster decisions across the business.
+            </p>
           </div>
 
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {t.services.items.map((item, index) => {
-              const Icon = serviceIcons[index];
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
               return (
                 <motion.div
-                  key={item.title}
+                  key={feature.title}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
@@ -985,8 +455,8 @@ export default function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-lavender text-iris">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mt-6 text-xl font-bold text-ink">{item.title}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{item.description}</p>
+                  <h3 className="mt-6 text-xl font-bold text-ink">{feature.title}</h3>
+                  <p className="mt-3 leading-7 text-slate-600">{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -998,14 +468,17 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <SectionLabel>{t.workflow.label}</SectionLabel>
+              <SectionLabel>How it works</SectionLabel>
               <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-                {t.workflow.title}
+                From scattered work to repeatable execution.
               </h2>
-              <p className="mt-5 text-lg leading-8 text-slate-600">{t.workflow.body}</p>
+              <p className="mt-5 text-lg leading-8 text-slate-600">
+                OpsPilot gives teams a clean path from connection to automation to
+                measurable operating improvement.
+              </p>
             </div>
             <div className="grid gap-4">
-              {t.workflow.steps.map((step, index) => (
+              {steps.map((step, index) => (
                 <motion.div
                   key={step.title}
                   variants={fadeUp}
@@ -1034,17 +507,18 @@ export default function Home() {
       <section id="pricing" className="px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.pricingSection.label}</SectionLabel>
+            <SectionLabel>Pricing</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.pricingSection.title}
+              Plans that scale with your workflow maturity.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              {t.pricingSection.body}
+              Start with simple automation, then add reporting, controls, and deeper
+              integrations as the team grows.
             </p>
           </div>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {t.pricing.map((plan) => (
+            {plans.map((plan) => (
               <motion.div
                 key={plan.id}
                 variants={fadeUp}
@@ -1060,7 +534,7 @@ export default function Home() {
               >
                 {plan.highlighted ? (
                   <span className="absolute right-6 top-6 rounded-full bg-white px-3 py-1 text-xs font-bold text-iris">
-                    {t.pricingSection.popular}
+                    Most popular
                   </span>
                 ) : null}
                 <h3 className="text-2xl font-bold">{plan.name}</h3>
@@ -1082,7 +556,7 @@ export default function Home() {
                       : "bg-ink text-white hover:bg-slate-800"
                   }`}
                 >
-                  {t.pricingSection.select} {plan.name}
+                  Choose {plan.name}
                 </button>
                 <div className="mt-8 space-y-4">
                   {plan.includes.map((item) => (
@@ -1103,14 +577,14 @@ export default function Home() {
       <section id="reviews" className="bg-cloud px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>{t.reviews.label}</SectionLabel>
+            <SectionLabel>Testimonials</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.reviews.title}
+              Built for teams that need momentum, not more meetings.
             </h2>
           </div>
 
           <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {t.reviews.testimonials.map((testimonial) => (
+            {testimonials.map((testimonial) => (
               <motion.figure
                 key={testimonial.name}
                 variants={fadeUp}
@@ -1126,7 +600,7 @@ export default function Home() {
                   ))}
                 </div>
                 <blockquote className="mt-6 leading-8 text-slate-700">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
                 <figcaption className="mt-6 border-t border-slate-100 pt-5">
                   <p className="font-bold text-ink">{testimonial.name}</p>
@@ -1138,20 +612,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="quote" className="bg-ink px-5 py-24 text-white sm:px-6 lg:px-8">
+      <section id="demo" className="bg-ink px-5 py-24 text-white sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <SectionLabel>{t.quote.label}</SectionLabel>
+            <SectionLabel>Book a demo</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal sm:text-5xl">
-              {t.quote.title}
+              See where automation can save your team the most time.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">{t.quote.body}</p>
+            <p className="mt-5 text-lg leading-8 text-white/70">
+              Select a plan, share your workflow goal, and get a focused demo around
+              your team&apos;s real operating process.
+            </p>
             <div className="mt-8 grid gap-3">
-              <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-                <p className="text-sm text-white/45">{t.quote.selectedPlan}</p>
-                <p className="mt-1 font-semibold text-white">{selectedPlan.name}</p>
-              </div>
-              {t.quote.highlights.map(([label, value]) => (
+              {[
+                ["Selected plan", selectedPlan.name],
+                ["Best fit", "Startup operations, AI workflow, SaaS teams"],
+                ["Demo focus", "Automation, productivity, reporting"]
+              ].map(([label, value]) => (
                 <div key={label} className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
                   <p className="text-sm text-white/45">{label}</p>
                   <p className="mt-1 font-semibold text-white">{value}</p>
@@ -1160,62 +637,61 @@ export default function Home() {
             </div>
           </div>
 
-          <form onSubmit={submitQuote} className="rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft">
+          <form onSubmit={submitDemo} className="rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft">
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-semibold">
-                {t.quote.labels.name}
+                Name
                 <input
                   required
                   value={form.name}
                   onChange={(event) => setForm({ ...form, name: event.target.value })}
                   className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                  placeholder={t.quote.placeholders.name}
+                  placeholder="Your name"
                 />
               </label>
               <label className="grid gap-2 text-sm font-semibold">
-                {t.quote.labels.email}
+                Email
                 <input
                   required
                   type="email"
                   value={form.email}
                   onChange={(event) => setForm({ ...form, email: event.target.value })}
                   className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                  placeholder={t.quote.placeholders.email}
+                  placeholder="you@example.com"
                 />
               </label>
             </div>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.quote.labels.homeType}
+              Company
               <input
                 required
-                value={form.homeType}
-                onChange={(event) => setForm({ ...form, homeType: event.target.value })}
+                value={form.company}
+                onChange={(event) => setForm({ ...form, company: event.target.value })}
                 className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                placeholder={t.quote.placeholders.homeType}
+                placeholder="Company name"
               />
             </label>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.quote.labels.rooms}
+              Team size
               <select
-                value={form.rooms}
-                onChange={(event) => setForm({ ...form, rooms: event.target.value })}
+                value={form.teamSize}
+                onChange={(event) => setForm({ ...form, teamSize: event.target.value })}
                 className="rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
               >
-                {t.quote.roomOptions.map((room) => (
-                  <option key={room.id} value={room.id}>
-                    {room.label}
-                  </option>
-                ))}
+                <option>1-10</option>
+                <option>11-50</option>
+                <option>51-200</option>
+                <option>200+</option>
               </select>
             </label>
             <label className="mt-4 grid gap-2 text-sm font-semibold">
-              {t.quote.labels.details}
+              Workflow goal
               <textarea
                 required
-                value={form.details}
-                onChange={(event) => setForm({ ...form, details: event.target.value })}
+                value={form.goal}
+                onChange={(event) => setForm({ ...form, goal: event.target.value })}
                 className="min-h-32 resize-none rounded-lg border border-slate-200 px-4 py-3 font-normal outline-none transition focus:border-iris"
-                placeholder={t.quote.placeholders.details}
+                placeholder="Example: automate onboarding tasks, summarize support escalations, improve sales follow-up..."
               />
             </label>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -1224,7 +700,7 @@ export default function Home() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-iris px-6 py-3 font-semibold text-white transition hover:bg-[#5B4BE8]"
               >
                 <Mail className="h-5 w-5" />
-                {t.quote.submit}
+                Send demo request
               </button>
               <button
                 type="button"
@@ -1232,7 +708,7 @@ export default function Home() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-ink transition hover:border-slate-300"
               >
                 <CopyCheck className="h-5 w-5" />
-                {copied ? t.quote.copied : t.quote.copy}
+                {copied ? "Request copied" : "Copy request"}
               </button>
             </div>
           </form>
@@ -1242,14 +718,16 @@ export default function Home() {
       <section id="faq" className="px-5 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <SectionLabel>{t.faq.label}</SectionLabel>
+            <SectionLabel>FAQ</SectionLabel>
             <h2 className="mt-5 text-4xl font-bold tracking-normal text-ink sm:text-5xl">
-              {t.faq.title}
+              Questions before adding AI to operations.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{t.faq.body}</p>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Clear answers for evaluating automation, team adoption, and technical fit.
+            </p>
           </div>
           <div className="space-y-4">
-            {t.faq.items.map((faq) => (
+            {faqs.map((faq) => (
               <details
                 key={faq.question}
                 className="group rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
@@ -1272,22 +750,25 @@ export default function Home() {
               <Zap className="h-7 w-7" />
             </div>
             <h2 className="mt-7 text-4xl font-bold tracking-normal sm:text-5xl">
-              {t.finalCta.title}
+              Ready to run operations with less manual work?
             </h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">{t.finalCta.body}</p>
+            <p className="mt-5 text-lg leading-8 text-white/70">
+              Connect your tools, automate repeatable workflows, and give every team
+              the context they need to execute faster.
+            </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="#quote"
+                href="#demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-ink transition hover:bg-slate-100"
               >
-                {t.finalCta.primary}
+                Book a demo
                 <ArrowRight className="h-5 w-5" />
               </a>
               <a
                 href="#pricing"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
               >
-                {t.finalCta.secondary}
+                Compare pricing
                 <BarChart3 className="h-5 w-5" />
               </a>
             </div>
@@ -1304,8 +785,15 @@ export default function Home() {
         <ArrowUp className="h-5 w-5" />
       </button>
 
-      <footer className="px-5 py-10 text-center text-sm text-slate-500">
-        <p>{t.footer}</p>
+      <footer className="px-5 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-slate-200 pt-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>(c) 2026 OpsPilot AI. Startup SaaS landing page demo.</p>
+          <div className="flex flex-wrap justify-center gap-4 sm:justify-end">
+            <a href="#features" className="hover:text-ink">Features</a>
+            <a href="#pricing" className="hover:text-ink">Pricing</a>
+            <a href="#demo" className="hover:text-ink">Demo</a>
+          </div>
+        </div>
       </footer>
     </main>
   );

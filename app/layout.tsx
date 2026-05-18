@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BrightNest Cleaning | Premium Home Cleaning",
+  title: "OpsPilot AI | Startup SaaS Landing Page Demo",
   description:
-    "A customer-facing website demo for a premium local home cleaning service brand.",
+    "A polished AI productivity SaaS landing page demo built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.",
   openGraph: {
-    title: "BrightNest Cleaning | Premium Home Cleaning",
+    title: "OpsPilot AI | Startup SaaS Landing Page Demo",
     description:
-      "Book reliable home cleaning with clear packages, vetted cleaners, eco-friendly supplies, and simple quote requests.",
+      "Showcase landing page for an AI workflow automation platform focused on productivity, automation, and business efficiency.",
     type: "website"
   }
 };
