@@ -1,4 +1,4 @@
-# GlowCare Aesthetics - Client Landing Page Case Study
+# GlowCare Aesthetics - Startup SaaS Landing Page Demo
 
 ## Project Overview
 
