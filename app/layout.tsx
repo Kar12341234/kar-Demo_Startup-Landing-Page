@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "OpsPilot AI | Startup SaaS Landing Page Demo",
+  title: "GlowCare Aesthetics | Advanced Skin and Laser Clinic",
   description:
-    "A polished AI productivity SaaS landing page demo built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.",
+    "Personalized facial, laser, acne, brightening, and skin rejuvenation treatments with a consultation-first approach.",
   openGraph: {
-    title: "OpsPilot AI | Startup SaaS Landing Page Demo",
+    title: "GlowCare Aesthetics | Advanced Skin and Laser Clinic",
     description:
-      "Showcase landing page for an AI workflow automation platform focused on productivity, automation, and business efficiency.",
+      "Book a personalized skin consultation and explore transparent treatment packages for clearer, brighter, natural-looking skin.",
     type: "website"
   }
 };

@@ -1,23 +1,23 @@
-# OpsPilot AI - Startup SaaS Landing Page Demo
+# GlowCare Aesthetics - Client Landing Page Case Study
 
 ## Project Overview
 
-OpsPilot AI is a polished Startup / AI SaaS landing page demo built for portfolio use. The page presents a fictional AI productivity platform that helps startup teams automate workflows, connect business tools, track blockers, and improve operating efficiency.
+GlowCare Aesthetics is a polished client landing page case study for a fictional high-end med spa / aesthetic clinic. The page is written as the clinic's own customer-facing website, focused on skin consultations, facial treatments, laser brightening, acne support, anti-aging plans, pricing, testimonials, and appointment requests.
 
-This project is designed to show how a conversion-focused SaaS homepage can look and feel for clients on Fiverr, Upwork, Taobao, and other freelance marketplaces.
+This target was chosen because clinics, med spas, beauty brands, and local service businesses are common buyers of conversion-focused landing pages on Fiverr, Upwork, Taobao, and other freelance marketplaces.
 
 ## Features
 
-- High-impact hero section with clear SaaS positioning
+- High-impact hero section with clear clinic positioning
 - Strong primary and secondary CTA buttons
 - Trusted-by logo strip
-- Product dashboard preview mockup
-- Feature cards for automation, AI workflow, reporting, integrations, and admin controls
-- Three-step "How It Works" section
-- Pricing cards with selectable plans
+- Product-style treatment preview mockup
+- Treatment cards for skin analysis, laser brightening, hydration facials, acne support, anti-aging, and aftercare
+- Three-step consultation process section
+- Pricing cards with selectable treatment packages
 - Testimonials and FAQ
 - English / Traditional Chinese / Simplified Chinese content switcher
-- Functional demo request form using mailto
+- Functional appointment request form using mailto
 - Copy request button
 - Back-to-top button
 - Responsive layout for desktop, tablet, and mobile
@@ -35,19 +35,19 @@ This project is designed to show how a conversion-focused SaaS homepage can look
 
 This demo is intended to showcase the ability to build modern, premium, conversion-focused landing pages for:
 
-- Startup SaaS products
-- AI productivity tools
-- B2B software companies
-- Automation platforms
-- Technology brands
-- Product launch pages
+- Med spa and aesthetic clinics
+- Beauty and wellness brands
+- Local service businesses
+- Appointment-based service providers
+- Premium treatment and consultation pages
+- Productized service landing pages
 
 ## Screenshot Placeholder
 
 Add a screenshot here after deploying or capturing the local preview:
 
 ```md
-![OpsPilot AI landing page screenshot](./screenshot.png)
+![GlowCare Aesthetics landing page screenshot](./screenshot.png)
 ```
 
 ## Netlify-Ready
