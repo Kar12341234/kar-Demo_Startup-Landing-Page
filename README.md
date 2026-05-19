@@ -16,6 +16,7 @@ This project is designed to show how a conversion-focused SaaS homepage can look
 - Three-step "How It Works" section
 - Pricing cards with selectable plans
 - Testimonials and FAQ
+- English / Traditional Chinese / Simplified Chinese content switcher
 - Functional demo request form using mailto
 - Copy request button
 - Back-to-top button
